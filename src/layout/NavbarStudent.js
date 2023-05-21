@@ -12,7 +12,7 @@ export default function NavbarStudent() {
     <div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-          <Link class="navbar-brand" to="/">Réplica <i class="fa-solid fa-r fa-beat-fade"></i></Link>
+          <Link class="navbar-brand" to="/"><i class="fa-solid fa-r fa-beat-fade"></i> | Réplica </Link>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -25,14 +25,14 @@ export default function NavbarStudent() {
                 <Link class="nav-link" to="/internships">Prácticas</Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/teachers">TFG</Link>
+                <Link class="nav-link" to="/final_project">TFG</Link>
               </li>
             </ul>
             
             <form class="d-flex">
             
             
-              <Link class="btn btn-success" to={"/profile"}> Mi Perfil | <i class="fa-solid fa-user"></i></Link>
+              <Link class="btn btn-success" to={"/student_profile"}> Mi Perfil | <i class="fa-solid fa-user"></i></Link>
             </form>
             
             

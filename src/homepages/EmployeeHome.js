@@ -1,15 +1,15 @@
 import React from 'react'
-import Footer from '../layout/FooterAdmin'
-import Navbar from '../layout/NavbarAdmin'
+import FooterEmployee from '../layout/FooterEmployee'
+import NavbarEmployee from '../layout/NavbarEmployee'
 
 
 
-export default function StudentHome() {
+export default function EmployeeHome() {
 
   return (
     <div>
 
-    <Navbar/>
+    <NavbarEmployee/>
     
     <div class="container">
 
@@ -17,7 +17,7 @@ export default function StudentHome() {
      
       
       <div class="container mt-5 mb-5">
-      <h2>STUDENT<i class="fa-solid fa-graduation-cap"></i></h2>
+      <h2>EMPLOYEE<i class="fa-solid fa-graduation-cap"></i></h2>
       </div>
       
      
@@ -53,7 +53,7 @@ export default function StudentHome() {
       </div>
 
     </div>
-    <Footer/>
+    <FooterEmployee/>
     </div>
   )
 }

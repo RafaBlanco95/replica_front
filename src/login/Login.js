@@ -19,10 +19,12 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const response = await axios.post('http://localhost:8080/replica/v1/signin', { username, password });
-      const { token, roles } = response.data;
+      const { token, roles, user } = response.data;
       const role = roles[0]; // Obtener el primer elemento del array de roles
+      const localUsername=user.username;
       localStorage.setItem('token', token);
       localStorage.setItem('role', role);
+      localStorage.setItem('username', localUsername);
       setLoggedIn(true);
     } catch (error) {
       setError('Error de inicio de sesión. Por favor, verifica tus credenciales.');

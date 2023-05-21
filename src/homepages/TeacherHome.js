@@ -1,6 +1,6 @@
 import React from 'react'
-import Footer from '../layout/FooterAdmin'
-import Navbar from '../layout/NavbarAdmin'
+import FooterTeacher from '../layout/FooterTeacher'
+import NavbarTeacher from '../layout/NavbarTeacher'
 
 
 
@@ -9,7 +9,7 @@ export default function TeacherHome() {
   return (
     <div>
 
-    <Navbar/>
+    <NavbarTeacher/>
     
     <div class="container">
 
@@ -53,7 +53,7 @@ export default function TeacherHome() {
       </div>
 
     </div>
-    <Footer/>
+    <FooterTeacher/>
     </div>
   )
 }

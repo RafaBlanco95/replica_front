@@ -1,7 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Navbar() {
+
+
+export default function NavbarEmployee() {
+
+
+ 
  
   return (
     <div>
@@ -17,23 +22,14 @@ export default function Navbar() {
                 <Link class="nav-link active" aria-current="page" to="/">Inicio</Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/students">Alumnos</Link>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/teachers">Profesores</Link>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/employees">Tutores de Empresa</Link>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/signup">Crear Usuario </Link>
+                <Link class="nav-link" to="/employee_internship">Prácticas Tuteladas</Link>
               </li>
             </ul>
             
             <form class="d-flex">
             
             
-              <Link class="btn btn-success" to={"/admin_profile"}>  Mi perfil | <i class="fa-solid fa-user"></i></Link>
+              <Link class="btn btn-success" to={"/employee_profile"}> Mi Perfil | <i class="fa-solid fa-user"></i></Link>
             </form>
             
             
