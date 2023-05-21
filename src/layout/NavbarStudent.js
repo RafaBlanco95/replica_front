@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 
 
-export default function Navbar() {
+export default function NavbarStudent() {
 
 
  
@@ -12,7 +12,7 @@ export default function Navbar() {
     <div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-          <Link class="navbar-brand" to="/">Tiberio <i class="fa-solid fa-graduation-cap"></i></Link>
+          <Link class="navbar-brand" to="/">Réplica <i class="fa-solid fa-r fa-beat-fade"></i></Link>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -22,23 +22,17 @@ export default function Navbar() {
                 <Link class="nav-link active" aria-current="page" to="/">Inicio</Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/students">Alumnos</Link>
+                <Link class="nav-link" to="/internships">Prácticas</Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/teachers">Profesores</Link>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/exams">Exámenes</Link>
-              </li>
-              <li class="nav-item">
-                <Link class="nav-link" to="/practices">Prácticas </Link>
+                <Link class="nav-link" to="/teachers">TFG</Link>
               </li>
             </ul>
             
             <form class="d-flex">
             
             
-              <Link class="btn btn-success" to={"/profile"}>  | <i class="fa-solid fa-user"></i></Link>
+              <Link class="btn btn-success" to={"/profile"}> Mi Perfil | <i class="fa-solid fa-user"></i></Link>
             </form>
             
             

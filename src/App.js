@@ -2,7 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/AdminHome';
 import Login from './login/Login';
-import Navbar from './layout/Navbar';
+import StudentHome from './pages/StudentHome';
+import EmployeeHome from './pages/EmployeeHome';
+import TeacherHome from './pages/TeacherHome';
+
+
 
 
 const App = () => {
@@ -10,8 +14,10 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/navbar" element={<Navbar />} />
         <Route path="/home" element={<PrivateRoute />} />
+        <Route path="/home_student" element={<StudentHome />}/>
+        <Route path="/home_teacher" element={<TeacherHome />}/>
+        <Route path="/home_employee" element={<EmployeeHome />}/>
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
@@ -24,17 +30,36 @@ const PrivateRoute = () => {
 
   if (!isAuthenticated) {
     
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" />;
     
   }
 
-  // Agrega la lógica de autorización aquí
-  // Ejemplo: Solo se permite acceso a usuarios con el rol 'admin'
-  if (userRole !== 'ROLE_ADMIN') {
+  
+  if (userRole === 'ROLE_STUDENT') {
     
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/home_student" />;
     
   }
+
+  if (userRole === 'ROLE_TEACHER') {
+    
+    return <Navigate to="/home_teacher" />;
+    
+  }
+
+  if (userRole === 'ROLE_EMPLOYEE') {
+    
+    return <Navigate to="/home_employee" />;
+    
+  }
+
+  if (userRole === 'ROLE_ADMIN') {
+    
+    return <Home/>;
+    
+  }
+
+
 
   return <Home />;
 };

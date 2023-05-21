@@ -4,7 +4,7 @@ import Navbar from '../layout/NavbarAdmin'
 
 
 
-export default function Home() {
+export default function TeacherHome() {
 
   return (
     <div>
@@ -17,7 +17,7 @@ export default function Home() {
      
       
       <div class="container mt-5 mb-5">
-      <h2>Proyecto Final 2ºDAM: Réplica <i class="fa-solid fa-graduation-cap"></i></h2>
+      <h2>TEACHER<i class="fa-solid fa-graduation-cap"></i></h2>
       </div>
       
      
