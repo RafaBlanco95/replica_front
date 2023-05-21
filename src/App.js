@@ -5,6 +5,7 @@ import Login from './login/Login';
 import StudentHome from './homepages/StudentHome';
 import EmployeeHome from './homepages/EmployeeHome';
 import TeacherHome from './homepages/TeacherHome';
+import AdminProfile from './profiles/AdminProfile';
 
 
 
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/home_student" element={<StudentHome />} />
         <Route path="/home_teacher" element={<TeacherHome />} />
         <Route path="/home_employee" element={<EmployeeHome />} />
+        <Route path="/admin_profile" element={<AdminProfile />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
@@ -60,6 +62,7 @@ const PrivateRoute = () => {
   }
 
 
+  return <Home/>;
 
   
 };

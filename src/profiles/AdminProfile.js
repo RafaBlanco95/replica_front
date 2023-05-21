@@ -10,9 +10,12 @@ const AdminProfile = () => {
 
     function handleToken() {
         localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        localStorage.removeItem('role');
         navigate("/home");
         return null;
     }
+
 
 
     useEffect(() => {
@@ -21,14 +24,17 @@ const AdminProfile = () => {
         try {
           const token = localStorage.getItem('token');
           const username= localStorage.getItem('username');
-          const response = await axios.get(`http://localhost:8080/replica/v1/admins/${username}`, {
+          const response = await axios.get(`http://localhost:8080/replica/v1/users/username/${username}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           });
+
+          console.log(response);
   
           // Almacena los datos del usuario en el estado
           setUserData(response.data);
+
         } catch (error) {
           console.log('Error al obtener los datos del usuario', error);
         }
@@ -44,27 +50,27 @@ const AdminProfile = () => {
                     <div className='card'>
                         <div className='card-header'>
                             <b> Nº de Usuario:</b>
-                            {userData.id}
+                            {userData?.data?.id}
                             <ul className='list-group list-group-flush'>
                                 <li className='list-group-item'>
                                     <b>Nombre de Usuario: </b>
-                                    {userData.username}
+                                    {userData?.data?.username}
                                 </li>
                                 <li className='list-group-item'>
                                     <b>Correo Electrónico </b>
-                                    {userData.email}
+                                    {userData?.data?.email}
                                 </li>
                                 <li className='list-group-item'>
                                     <b>Contraseña: </b>
-                                    {userData.password}
+                                    {userData?.data?.password}
                                 </li>
                                 <li className='list-group-item'>
                                     <b>Rol: </b>
-                                    {userData.roles[0]}
+                                    {userData?.data?.roles[0].name}
                                 </li>
                             </ul>
                         </div>
-                        <Link className="btn btn-primary mx-2" to={`/edituser/${userData.id}`}>Editar</Link>
+                        
                         <button className="btn btn-danger mx-2" onClick={handleToken}>Cerrar Sesión</button>
                         
 
