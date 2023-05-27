@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom'
-import Navbar from '../layout/NavbarAdmin';
-import Footer from '../layout/FooterAdmin';
+import Navbar from '../layout/NavbarTeacher';
+import Footer from '../layout/FooterTeacher';
+import '../profiles/Profiles.css'
 
 
-const AdminProfile = () => {
+const TeacherProfile = () => {
     const [userData, setUserData] = useState(null);
 
     let navigate = useNavigate()
@@ -26,7 +27,7 @@ const AdminProfile = () => {
             try {
                 const token = localStorage.getItem('token');
                 const username = localStorage.getItem('username');
-                const response = await axios.get(`http://localhost:8080/replica/v1/users/username/${username}`, {
+                const response = await axios.get(`http://localhost:8080/replica/v1/teachers/username/${username}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -50,7 +51,7 @@ const AdminProfile = () => {
             <div className="container">
                 <div className='row mb-5'>
                     <div className='col-md-6 offset-md-3 border rounded p-4 mt-5 shadow'>
-                        <h2 className='text-center m-4'>Perfil de Administrador</h2>
+                        <h2 className='text-center m-4 '>Perfil de Profesor</h2>
                         <div className='card'>
                             <div className='card-header'>
                                 <b> Nº de Usuario:</b>
@@ -61,25 +62,36 @@ const AdminProfile = () => {
                                         {userData?.data?.username}
                                     </li>
                                     <li className='list-group-item'>
+                                        <b>Nombre: </b>
+                                        {userData?.data?.name}
+                                    </li>
+                                    <li className='list-group-item'>
+                                        <b>Apellidos: </b>
+                                        {userData?.data?.lastName}
+                                    </li>
+                                    <li className='list-group-item'>
+                                        <b>Centro: </b>
+                                        {userData?.data?.center}
+                                    </li>
+                                    <li className='list-group-item'>
                                         <b>Correo Electrónico </b>
-                                        {userData?.data?.email}
+                                        {userData?.data?.login_user?.email}
                                     </li>
                                     <li className='list-group-item'>
                                         <b>Contraseña: </b>
-                                        {userData?.data?.password}
+                                        {userData?.data?.login_user?.password}
                                     </li>
                                     <li className='list-group-item'>
                                         <b>Rol: </b>
-                                        {userData?.data?.roles[0].name}
+                                        {userData?.data?.login_user?.roles[0].name}
                                     </li>
                                 </ul>
                             </div>
-
-                            <button className="btn btn-danger mx-2" onClick={handleToken}>Cerrar Sesión</button>
+                            
 
 
                         </div>
-                        <Link className="btn btn-primary mx-2" to={`/edit_admin/${userData?.data?.id}`}>Editar</Link>
+                        <Link className="btn btn-primary mx-2" to={`/edit_teacher/${userData?.data?.id}`}>Editar</Link>
                         <button className="btn btn-danger mx-2" onClick={handleToken}>Cerrar Sesión</button>
                         <Link className="btn btn-secondary my-2" to={"/home"}>Volver</Link>
                     </div>
@@ -91,4 +103,4 @@ const AdminProfile = () => {
     );
 };
 
-export default AdminProfile;
+export default TeacherProfile;

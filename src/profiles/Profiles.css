@@ -1,0 +1,7 @@
+.custom-color{
+
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background: linear-gradient(136deg, #3398DB, #647eff);
+background-clip: text;
+}

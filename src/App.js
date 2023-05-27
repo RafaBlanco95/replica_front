@@ -6,6 +6,10 @@ import StudentHome from './homepages/StudentHome';
 import EmployeeHome from './homepages/EmployeeHome';
 import TeacherHome from './homepages/TeacherHome';
 import AdminProfile from './profiles/AdminProfile';
+import StudentProfile from './profiles/StudentProfile';
+import EmployeeProfile from './profiles/EmployeeProfile';
+import TeacherProfile from './profiles/TeacherProfile';
+import EditStudent from './profiles/edit/EditStudent';
 
 
 
@@ -20,6 +24,10 @@ const App = () => {
         <Route path="/home_teacher" element={<TeacherHome />} />
         <Route path="/home_employee" element={<EmployeeHome />} />
         <Route path="/admin_profile" element={<AdminProfile />} />
+        <Route path="/student_profile" element={<StudentProfile />} />
+        <Route path="/employee_profile" element={<EmployeeProfile />} />
+        <Route path="/teacher_profile" element={<TeacherProfile />} />
+        <Route path="/edit_student/:id" element={<EditStudent />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
