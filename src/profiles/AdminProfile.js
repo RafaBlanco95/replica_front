@@ -75,7 +75,7 @@ const AdminProfile = () => {
                                 </ul>
                             </div>
 
-                            <button className="btn btn-danger mx-2" onClick={handleToken}>Cerrar Sesión</button>
+                           
 
 
                         </div>

@@ -9,9 +9,9 @@ export default function Footer() {
                 <div class="social"><a href="https://www.linkedin.com/in/rafael-blanco-aranda-56676960/"><i class="fa-brands fa-linkedin"></i></a><a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a><a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a><a href="https://es-es.facebook.com/"><i class="fa-brands fa-facebook"></i></a></div>
                 <ul class="list-inline">
                     <li class="list-inline-item text-light"><Link to="/">Inicio</Link></li>
-                    <li class="list-inline-item text-light"><Link to="/students">Alumnos</Link></li>
-                    <li class="list-inline-item text-light"><Link to="/teachers">Profesores</Link></li>
-                    <li class="list-inline-item text-light"><Link to="/employees">Tutores de Empresa</Link></li>
+                    <li class="list-inline-item text-light"><Link to="/students_list">Alumnos</Link></li>
+                    <li class="list-inline-item text-light"><Link to="/teachers_list">Profesores</Link></li>
+                    <li class="list-inline-item text-light"><Link to="/employees_list">Tutores de Empresa</Link></li>
                     <li class="list-inline-item text-light"><Link to="/signup"> Crear Ususario</Link></li>
                 </ul>
             </footer>

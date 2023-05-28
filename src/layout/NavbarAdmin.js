@@ -17,13 +17,13 @@ export default function Navbar() {
                 <Link class="nav-link active" aria-current="page" to="/">Inicio</Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/students">Alumnos</Link>
+                <Link class="nav-link" to="/students_list">Alumnos</Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/teachers">Profesores</Link>
+                <Link class="nav-link" to="/teachers_list">Profesores</Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/employees">Tutores de Empresa</Link>
+                <Link class="nav-link" to="/employees_list">Tutores de Empresa</Link>
               </li>
               <li class="nav-item">
                 <Link class="nav-link" to="/signup">Crear Usuario </Link>

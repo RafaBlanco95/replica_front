@@ -10,6 +10,15 @@ import StudentProfile from './profiles/StudentProfile';
 import EmployeeProfile from './profiles/EmployeeProfile';
 import TeacherProfile from './profiles/TeacherProfile';
 import EditStudent from './profiles/edit/EditStudent';
+import EditTeacher from './profiles/edit/EditTeacher';
+import EditEmployee from './profiles/edit/EditEmployee';
+import EditAdmin from './profiles/edit/EditAdmin';
+import StudentsList from './adminpages/StudentsList';
+import EditStudentAdmin from './adminpages/EditStudentAdmin';
+import ViewStudentAdmin from './adminpages/ViewStudentAdmin';
+import StudentInternshipDetail from './adminpages/StudentInternshipDetail';
+import TeachersList from './adminpages/TeachersList';
+import EditTeacherAdmin from './adminpages/EditTeacherAdmin';
 
 
 
@@ -28,6 +37,15 @@ const App = () => {
         <Route path="/employee_profile" element={<EmployeeProfile />} />
         <Route path="/teacher_profile" element={<TeacherProfile />} />
         <Route path="/edit_student/:id" element={<EditStudent />} />
+        <Route path="/edit_teacher/:id" element={<EditTeacher />} />
+        <Route path="/edit_employee/:id" element={<EditEmployee />} />
+        <Route path="/edit_admin/:id" element={<EditAdmin />} />
+        <Route path="/students_list" element={<StudentsList />} />
+        <Route path="/teachers_list" element={<TeachersList />} />
+        <Route path="/edit_student_admin/:id" element={<EditStudentAdmin />} />
+        <Route path="/edit_teacher_admin/:id" element={<EditTeacherAdmin />} />
+        <Route path="/view_student_admin/:id" element={<ViewStudentAdmin />} />
+        <Route path="/student/:id/internship/:id2" element={<StudentInternshipDetail startDate={"2023/01/01"} endDate={"2023/02/02"} />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
