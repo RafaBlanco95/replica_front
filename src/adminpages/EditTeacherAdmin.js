@@ -40,6 +40,34 @@ export default function EditTeacherAdmin() {
         name: '',
         username: '',
         lastName: '',
+        login_user:{
+          id: 0,
+        username: '',
+        email: '',
+        password: '',
+        roles: [
+          {
+            id: 0,
+            name: ''
+          }
+        ]
+      }, teacher: {
+        id: 0,
+        username: '',
+        name: '',
+        lastName: '',
+        center: ''
+      },
+      internships: [
+        {
+          id: 0,
+          startingDate: '',
+          endingDate: '',
+          type: '',
+          totalHours: 0,
+          enterprise: ''
+        }
+      ],
         finalProject: {
           id: 0,
           title: '',
@@ -71,11 +99,12 @@ export default function EditTeacherAdmin() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    console.log(teacher);
     await axios.put(`http://localhost:8080/replica/v1/teachers/${id}`, teacher);
     await axios.put(`http://localhost:8080/replica/v1/users/${user.id}`, user);
     localStorage.removeItem('username');
     localStorage.setItem('username', username);
-    navigate(`/view_teacher/${id}`);
+    navigate(`/view_teacher_admin/${id}`);
   };
 
 

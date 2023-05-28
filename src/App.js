@@ -19,6 +19,10 @@ import ViewStudentAdmin from './adminpages/ViewStudentAdmin';
 import StudentInternshipDetail from './adminpages/StudentInternshipDetail';
 import TeachersList from './adminpages/TeachersList';
 import EditTeacherAdmin from './adminpages/EditTeacherAdmin';
+import ViewTeacherAdmin from './adminpages/ViewTeacherAdmin';
+import EmployeeList from './adminpages/EmployeeList';
+import EditEmployeeAdmin from './adminpages/EditEmployeeAdmin';
+import ViewEmployeeAdmin from './adminpages/ViewEmployeeAdmin';
 
 
 
@@ -42,9 +46,13 @@ const App = () => {
         <Route path="/edit_admin/:id" element={<EditAdmin />} />
         <Route path="/students_list" element={<StudentsList />} />
         <Route path="/teachers_list" element={<TeachersList />} />
+        <Route path="/employees_list" element={<EmployeeList />} />
         <Route path="/edit_student_admin/:id" element={<EditStudentAdmin />} />
         <Route path="/edit_teacher_admin/:id" element={<EditTeacherAdmin />} />
+        <Route path="/edit_employee_admin/:id" element={<EditEmployeeAdmin />} />
         <Route path="/view_student_admin/:id" element={<ViewStudentAdmin />} />
+        <Route path="/view_teacher_admin/:id" element={<ViewTeacherAdmin />} />
+        <Route path="/view_employee_admin/:id" element={<ViewEmployeeAdmin />} />
         <Route path="/student/:id/internship/:id2" element={<StudentInternshipDetail startDate={"2023/01/01"} endDate={"2023/02/02"} />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>

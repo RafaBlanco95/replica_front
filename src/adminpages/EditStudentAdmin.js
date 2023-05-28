@@ -82,7 +82,7 @@ export default function EditStudentAdmin() {
     await axios.put(`http://localhost:8080/replica/v1/users/${user.id}`, user);
     localStorage.removeItem('username');
     localStorage.setItem('username', username);
-    navigate(`/view_student/${id}`);
+    navigate(`/view_student_admin/${id}`);
   };
 
 
