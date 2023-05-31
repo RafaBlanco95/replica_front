@@ -9,7 +9,8 @@ export default function AddStudent() {
 
     
     const [user, setUser] = useState({
-
+        name:"",
+        lastName:"",
         username: "",
         email: "",
         role: [
@@ -18,7 +19,7 @@ export default function AddStudent() {
         password: ""
     });
 
-    const { username, email, password } = user
+    const { name, lastName, username, email, password } = user
 
     const onInputChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
@@ -27,7 +28,7 @@ export default function AddStudent() {
     const onSubmit = async (e) => {
         e.preventDefault();
         await axios.post(`http://localhost:8080/replica/v1/signup`, user)
-        navigate(`/complete_student/internship/${username}`)
+        navigate(`/complete_student/teacher/${username}`)
     }
 
     return (
@@ -45,6 +46,18 @@ export default function AddStudent() {
                                 <input type={"text"} className="form-control" placeholder='Nombre de Usuario' name="username" value={username} onChange={(e) => onInputChange(e)} />
                             </div>
                             <div className='mb-3'>
+                            <label htmlFor='name' className='form-label'>
+                                Nombre
+                            </label>
+                            <input type={"text"} className="form-control" placeholder='Nombre' name="name" value={name} onChange={(e) => onInputChange(e)} />
+                        </div>
+                        <div className='mb-3'>
+                            <label htmlFor='lastName' className='form-label'>
+                                Apellidos
+                            </label>
+                            <input type={"text"} className="form-control" placeholder='Apellidos' name="lastName" value={lastName} onChange={(e) => onInputChange(e)} />
+                        </div>
+                            <div className='mb-3'>
                                 <label htmlFor='grupo' className='form-label'>
                                     Correo Electrónico
                                 </label>
@@ -57,7 +70,7 @@ export default function AddStudent() {
                                 <input type={"password"} className="form-control" placeholder='Contraseña del Alumno' name="password" value={password} onChange={(e) => onInputChange(e)} />
                             </div>
                             <button type="submit" className='btn btn-outline-primary'>Registrar</button>
-                            <Link className='btn btn-outline-danger mx-2' to="/students">Cancelar</Link>
+                            <Link className='btn btn-outline-danger mx-2' to="/students_list">Cancelar</Link>
                         </form>
                     </div>
                 </div>

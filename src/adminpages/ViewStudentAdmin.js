@@ -128,8 +128,8 @@ export default function ViewStudentAdmin() {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>{student?.finalProject.id}</td>
-                                                    <td>{student?.finalProject.title}</td>
+                                                    <td>{student.finalProject ? student.finalProject.id : 'N/A'}</td>
+                                                    <td>{student.finalProject ? student.finalProject.title : 'N/A'}</td>
                                                     <td><Link className='btn btn-outline-primary mx-2' to={`/student/${id}/finalProject_admin`}>Detalles del Proyecto</Link></td>
 
                                                 </tr>

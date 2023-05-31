@@ -51,6 +51,7 @@ export default function ViewTeacherAdmin() {
 
     const loadTeacher = async () => {
         const result = await axios.get(`http://localhost:8080/replica/v1/teachers/${id}`)
+        console.log(result.data.data);
         setTeacher(result.data.data)
     }
     return (
@@ -62,8 +63,10 @@ export default function ViewTeacherAdmin() {
                         <h2 className='text-center m-4'>Ficha del Profesor</h2>
                         <div className='card'>
                             <div className='card-header'>
-                                <b>Ficha del Profesor Nº:</b>
-                                {teacher.id}
+                            <b>Ficha del Profesor Nº:</b>
+              {teacher ? teacher.id : 'Cargando...'}
+              {/* Comprobación de nulidad antes de acceder a las propiedades */}
+              {teacher && (
                                 <ul className='list-group list-group-flush'>
                                     <li className='list-group-item'>
                                         <b>Nombre: </b>
@@ -100,7 +103,10 @@ export default function ViewTeacherAdmin() {
                                                             <th scope="row" key={index}>{student.id}</th>
                                                             <td>{student.name}</td>
                                                             <td>{student.lastName}</td>
-                                                            <td>{student.finalProject.title}</td>
+                                                            <td>
+        {student.finalProject ? student.finalProject.id : 'N/A'}
+        {/* Comprobación adicional para evitar el acceso a 'id' si 'finalProject' es nulo */}
+      </td>
                                                             <td><Link className='btn btn-outline-primary mx-2' to={`/view_student_admin/${student.id}`}>Detalle Alumno</Link></td>
                                                         </tr>
                                                     ))
@@ -114,6 +120,7 @@ export default function ViewTeacherAdmin() {
 
 
                                 </ul>
+                                 )}
                             </div>
 
 

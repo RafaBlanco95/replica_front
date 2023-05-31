@@ -60,7 +60,7 @@ export default function AddInternshipToStudent() {
   });
 
   const{startingDate, endingDate, type, totalHours, enterprise}=internship
-  const { id, name, lastName } = student;
+  const { id } = student;
 
   const onInputChange = (e) => {
     setInternship({ ...internship, [e.target.name]: e.target.value });
@@ -95,18 +95,7 @@ export default function AddInternshipToStudent() {
                     <h2 className='text-center m-4'>Crear Práctica al Nuevo Alumno</h2>
                     <form onSubmit={(e) => onSubmit(e)}>
                        
-                        <div className='mb-3'>
-                            <label htmlFor='name' className='form-label'>
-                                Nombre
-                            </label>
-                            <input type={"text"} className="form-control" placeholder='Nuevo Nombre' name="name" value={name} onChange={(e) => onInputChange(e)} />
-                        </div>
-                        <div className='mb-3'>
-                            <label htmlFor='lastName' className='form-label'>
-                                Apellidos
-                            </label>
-                            <input type={"text"} className="form-control" placeholder='Nuevos Apellidos' name="lastName" value={lastName} onChange={(e) => onInputChange(e)} />
-                        </div>
+                       
                         <div className='mb-3'>
                             <label htmlFor='startingDate' className='form-label'>
                                 Fecha de inicio
