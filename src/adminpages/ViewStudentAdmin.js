@@ -98,12 +98,12 @@ export default function ViewStudentAdmin() {
                                             </thead>
                                             <tbody>
                                                 {
-                                                    student.internships.map((internships, index) => (
+                                                    student?.internships?.map((internships, index) => (
                                                         <tr>
                                                             <th scope="row" key={index}>{internships.id}</th>
-                                                            <td>{internships.type}</td>
-                                                            <td>{internships.enterprise}</td>
-                                                            <td>{internships.totalHours}</td>
+                                                            <td>{internships?.type}</td>
+                                                            <td>{internships?.enterprise}</td>
+                                                            <td>{internships?.totalHours}</td>
                                                             <td><Link className='btn btn-outline-primary mx-2' to={`/student/${id}/internship/${internships.id}`}>Seguimiento</Link></td>
                                                         </tr>
                                                     ))
@@ -128,8 +128,8 @@ export default function ViewStudentAdmin() {
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>{student.finalProject.id}</td>
-                                                    <td>{student.finalProject.title}</td>
+                                                    <td>{student?.finalProject.id}</td>
+                                                    <td>{student?.finalProject.title}</td>
                                                     <td><Link className='btn btn-outline-primary mx-2' to={`/student/${id}/finalProject_admin`}>Detalles del Proyecto</Link></td>
 
                                                 </tr>

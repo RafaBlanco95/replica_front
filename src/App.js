@@ -23,6 +23,8 @@ import ViewTeacherAdmin from './adminpages/ViewTeacherAdmin';
 import EmployeeList from './adminpages/EmployeeList';
 import EditEmployeeAdmin from './adminpages/EditEmployeeAdmin';
 import ViewEmployeeAdmin from './adminpages/ViewEmployeeAdmin';
+import AddStudent from './adminpages/AdminCreateStudent';
+import AddInternshipToStudent from './adminpages/AddInternshipToStudent';
 
 
 
@@ -47,6 +49,8 @@ const App = () => {
         <Route path="/students_list" element={<StudentsList />} />
         <Route path="/teachers_list" element={<TeachersList />} />
         <Route path="/employees_list" element={<EmployeeList />} />
+        <Route path="/add_student" element={<AddStudent />} />
+        <Route path="/complete_student/internship/:createdUser" element={<AddInternshipToStudent />} />
         <Route path="/edit_student_admin/:id" element={<EditStudentAdmin />} />
         <Route path="/edit_teacher_admin/:id" element={<EditTeacherAdmin />} />
         <Route path="/edit_employee_admin/:id" element={<EditEmployeeAdmin />} />
