@@ -81,7 +81,7 @@ export default function AddInternshipToStudent() {
     e.preventDefault();
     console.log(internship);
     await axios.patch(`http://localhost:8080/replica/v1/students/internships/${id}`, internship);
-    navigate(`/students_list`);
+    navigate(`/complete_student/employee/${createdUser}`);
   };
 
 

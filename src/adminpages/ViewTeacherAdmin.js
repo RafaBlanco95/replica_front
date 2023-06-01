@@ -104,7 +104,7 @@ export default function ViewTeacherAdmin() {
                                                             <td>{student.name}</td>
                                                             <td>{student.lastName}</td>
                                                             <td>
-        {student.finalProject ? student.finalProject.id : 'N/A'}
+        {student.finalProject ? student.finalProject.title : 'N/A'}
         {/* Comprobación adicional para evitar el acceso a 'id' si 'finalProject' es nulo */}
       </td>
                                                             <td><Link className='btn btn-outline-primary mx-2' to={`/view_student_admin/${student.id}`}>Detalle Alumno</Link></td>

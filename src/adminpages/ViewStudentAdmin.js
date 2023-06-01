@@ -81,6 +81,32 @@ export default function ViewStudentAdmin() {
                                         {student.lastName}
                                     </li>
                                     <li className='list-group-item'>
+                                        <b>Profesor: </b>
+                                    </li>
+                                    <li className='list-group-item'>
+
+                                        <table class="table shadow">
+                                            <thead>
+                                                <tr class="table-primary">
+                                                    <th scope="col">ID Profesor</th>
+                                                    <th scope="col">Nombre</th>
+                                                    <th scope="col">Centro</th>
+                                                    <th scope="col">Detalles</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>{student.teacher ? student.teacher.id : 'N/A'}</td>
+                                                    <td>{student.teacher ? student.teacher.name : 'N/A'}</td>
+                                                    <td>{student.teacher ? student.teacher.center : 'N/A'}</td>
+                                                    <td><Link className='btn btn-outline-primary mx-2' to={`/view_student_admin/${id}`}>Detalles del Profesor</Link></td>
+
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </li>
+                                    <li className='list-group-item'>
                                         <b>Prácticas Realizadas: </b>
                                     </li>
                                     <li className='list-group-item'>
