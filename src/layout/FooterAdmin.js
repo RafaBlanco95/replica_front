@@ -12,7 +12,7 @@ export default function Footer() {
                     <li class="list-inline-item text-light"><Link to="/students_list">Alumnos</Link></li>
                     <li class="list-inline-item text-light"><Link to="/teachers_list">Profesores</Link></li>
                     <li class="list-inline-item text-light"><Link to="/employees_list">Tutores de Empresa</Link></li>
-                    <li class="list-inline-item text-light"><Link to="/signup"> Crear Ususario</Link></li>
+                    <li class="list-inline-item text-light"><Link to="/add_users"> Crear Ususario</Link></li>
                 </ul>
             </footer>
             <p class="copyright text-black bg-light"> <i class="fa-brands fa-react"></i> <b> Réplica © 2023</b><i class="fa-brands fa-react"></i></p>

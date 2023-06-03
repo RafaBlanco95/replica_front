@@ -26,7 +26,7 @@ export default function Navbar() {
                 <Link class="nav-link" to="/employees_list">Tutores de Empresa</Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/signup">Crear Usuario </Link>
+                <Link class="nav-link" to="/add_users">Crear Usuario </Link>
               </li>
             </ul>
             

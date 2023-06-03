@@ -28,6 +28,10 @@ import AddInternshipToStudent from './adminpages/AddInternshipToStudent';
 import AddTeacherToStudent from './adminpages/AddTeacherToStudent';
 import AddEmployeeToStudent from './adminpages/AddEmployeeToStudent';
 import AddFinalProjectToStudent from './adminpages/AddFinalProjectToStudent';
+import AddTeacher from './adminpages/AdminCreateTeacher';
+import AddEmployee from './adminpages/AdminCreateEmployee';
+import CreateUsers from './adminpages/CreateUsers';
+import InternshipWorkdayDetail from './adminpages/InternshipWorkdayDetail';
 
 
 
@@ -53,6 +57,9 @@ const App = () => {
         <Route path="/teachers_list" element={<TeachersList />} />
         <Route path="/employees_list" element={<EmployeeList />} />
         <Route path="/add_student" element={<AddStudent />} />
+        <Route path="/add_teacher" element={<AddTeacher />} />
+        <Route path="/add_employee" element={<AddEmployee />} />
+        <Route path="/add_users" element={<CreateUsers />} />
         <Route path="/complete_student/internship/:createdUser" element={<AddInternshipToStudent />} />
         <Route path="/complete_student/teacher/:createdUser" element={<AddTeacherToStudent />} />
         <Route path="/complete_student/employee/:createdUser" element={<AddEmployeeToStudent />} />
@@ -63,7 +70,8 @@ const App = () => {
         <Route path="/view_student_admin/:id" element={<ViewStudentAdmin />} />
         <Route path="/view_teacher_admin/:id" element={<ViewTeacherAdmin />} />
         <Route path="/view_employee_admin/:id" element={<ViewEmployeeAdmin />} />
-        <Route path="/student/:id/internship/:id2" element={<StudentInternshipDetail startDate={"2023/01/01"} endDate={"2023/02/02"} />} />
+        <Route path="/student/:id/internship/:id2" element={<StudentInternshipDetail />} />
+        <Route path="/student/:id/internship/:id2/workday/:id3" element={<InternshipWorkdayDetail />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>

@@ -1,70 +1,160 @@
-import React from 'react';
-import moment from 'moment';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import Footer from '../layout/FooterAdmin';
+import Navbar from '../layout/NavbarAdmin';
 
 
+export default function StudentInternshipDetail() {
 
- 
-    const StudentInternshipDetail = ({ startDate, endDate }) => {
-      const start = moment(startDate);
-      const end = moment(endDate);
-      const days = end.diff(start, 'days') + 1;
-    
-      const renderCalendar = () => {
-        const calendar = [];
-        let currentDate = start;
-    
-        for (let i = 0; i < days; i++) {
-          const day = (
-            <div key={i} className="col day">
-              {currentDate.format('D')}
-            </div>
-          );
-          calendar.push(day);
-          currentDate = currentDate.add(1, 'day');
-        }
-    
-        return calendar;
-      };
-    
-      return (
-        <div className="container">
+  const [page, setPage] = useState(0); // Página actual
+  const [totalPages, setTotalPages] = useState(0); // Total de páginas
 
-           
-          <div className="row">
-            <div className="col">
-              <h2>Calendario</h2>
-              <div className="row">
-                <div className="col">
-                  <strong>Domingo</strong>
-                </div>
-                <div className="col">
-                  <strong>Lunes</strong>
-                </div>
-                <div className="col">
-                  <strong>Martes</strong>
-                </div>
-                <div className="col">
-                  <strong>Miércoles</strong>
-                </div>
-                <div className="col">
-                  <strong>Jueves</strong>
-                </div>
-                <div className="col">
-                  <strong>Viernes</strong>
-                </div>
-                <div className="col">
-                  <strong>Sábado</strong>
-                </div>
+  const [internship, setInternship] = useState({
+
+    id: 0,
+    startingDate: '',
+    endingDate: '',
+    type: '',
+    totalHours: 0,
+    enterprise: '',
+    workdays: [
+      {
+        id: 2,
+        date: '',
+        hours: 0,
+        description: '',
+        isValidated: false
+      }]
+
+  });
+
+  const [workday, setWorkday] = useState([{
+    id: 0,
+    date: '',
+    hours: 0,
+    description: '',
+    isValidated: false
+  }
+
+  ]);
+
+  const { id, id2 } = useParams();
+
+  useEffect(() => {
+    loadInternship()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page])
+
+  const loadInternship = async () => {
+    const result = await axios.get(`http://localhost:8080/replica/v1/internships/${id2}`);
+    setInternship(result.data.data);
+    const result2 = await axios.get(`http://localhost:8080/replica/v1/internships/${id2}/workdays`, {
+      params: {
+        page: page, // Página actual
+        size: 5 // Tamaño de página (10 items por página en este ejemplo)
+      }
+    });
+    console.log(result2);
+    setWorkday(result2.data.data.content);
+    console.log(workday);
+    setTotalPages(result.data.totalPages);
+  };
+
+  const totalHours = workday.reduce((sum, workday) => sum + workday.hours, 0);
+  return (
+    <div>
+      <Navbar />
+      <div className="container">
+        <div className='row mb-5'>
+          <div className='col-md-8 offset-md-2 border rounded p-4 mt-3 shadow'>
+            <h2 className='text-center m-4'>Detalle de Práctica</h2>
+            <div className='card'>
+              <div className='card-header'>
+                <b>Práctica con Código Nº:</b>
+                {internship.id}
+                <ul className='list-group list-group-flush'>
+                  <li className='list-group-item'>
+                    <b>Fecha de Inicio: </b>
+                    {internship.startingDate}
+                  </li>
+                  <li className='list-group-item'>
+                    <b>Fecha Fin: </b>
+                    {internship.endingDate}
+                  </li>
+                  <li className='list-group-item'>
+                    <b>Empresa: </b>
+                    {internship.enterprise}
+                  </li>
+                  <li className='list-group-item'>
+                    <b>Modelo: </b>
+                    {internship.type}
+                  </li>
+                  <li className='list-group-item'>
+                    <b>Horas A Cumplir: </b>
+                    {internship.totalHours}
+                  </li>
+                  <li className='list-group-item'>
+                    <b>Horas Trabajadas: </b>
+                   {totalHours}
+                  </li>
+
+                  <li className='list-group-item'>
+                    <b>Jornadas de Trabajo: </b>
+                  </li>
+                  <li className='list-group-item'>
+
+                    <table class="table shadow">
+                      <thead>
+                        <tr class="table-primary">
+                          <th scope="col">Código</th>
+                          <th scope="col">Fecha</th>
+                          <th scope="col">Horas</th>
+                          <th scope="col">Validación</th>
+                          <th scope="col">Detalle</th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {
+                          workday.map((workday, index) => (
+                            <tr key={index}>
+                              <th scope="row">{workday.id}</th>
+                              <td>{workday.date}</td>
+                              <td>{workday.hours}</td>
+                              <td>
+                                {workday.isValidated ? (
+                                  <i className="fa-solid fa-circle-check" style={{ color: "#19d247" }}></i>
+                                ) : (
+                                  <i className="fa-solid fa-circle-xmark" style={{ color: "#d30d0d" }}></i>
+                                )}
+                              </td>
+                              <td>
+                                <Link className='btn btn-outline-primary mx-2' to={`/student/${id}/internship/${id2}/workday/${workday.id}`}>Ver Más</Link>
+                              </td>
+                            </tr>
+                          ))
+                        }
+                      </tbody>
+                    </table>
+                  </li>
+                </ul>
               </div>
-    
-              <div className="row">
-                {renderCalendar()}
-              </div>
             </div>
+            <div>
+              <button className="btn btn-primary my-2" disabled={page === 0} onClick={() => setPage(page - 1)}>
+                Anterior
+              </button>
+              <button className="btn btn-primary my-2" disabled={page === totalPages - 1} onClick={() => setPage(page + 1)}>
+                Siguiente
+              </button>
+            </div>
+            <Link className="btn btn-primary my-2" to={"/students_list"}>Volver</Link>
           </div>
         </div>
-      );
-    };
-    
-    export default StudentInternshipDetail;
-    
+      </div>
+      <Footer />
+    </div>
+  )
+
+}
