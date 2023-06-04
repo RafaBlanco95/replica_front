@@ -46,6 +46,8 @@ export default function StudentInternshipDetail() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page])
 
+  
+
   const loadInternship = async () => {
     const result = await axios.get(`http://localhost:8080/replica/v1/internships/${id2}`);
     setInternship(result.data.data);
@@ -66,6 +68,32 @@ export default function StudentInternshipDetail() {
         navigate(`/view_student_admin/${id}`)
     }
 
+    const addWorkday= async()=>{
+      navigate(`/student/${id}/internship/${id2}/add_workday`)
+  }
+
+  const validateWorkday = async (workdayId) => {
+    try {
+      const result3 = await axios.patch(`http://localhost:8080/replica/v1/workdays/${workdayId}`);
+      const updatedWorkday = result3.data.data;
+      setWorkday((prevWorkday) => {
+        return prevWorkday.map((workday) => {
+          if (workday.id === updatedWorkday.id) {
+            return updatedWorkday;
+          }
+          return workday;
+        });
+      });
+    } catch (error) {
+      console.error('Error al validar el día de trabajo:', error);
+    }
+  };
+
+  const deleteWorkday = async (idWorkday) => {
+    const result4=await axios.delete(`http://localhost:8080/replica/v1/workdays/${idWorkday}`);
+    console.log(result4);
+    loadInternship()
+}
   const totalHours = workday.reduce((sum, workday) => sum + workday.hours, 0);
   return (
     <div>
@@ -116,7 +144,7 @@ export default function StudentInternshipDetail() {
                           <th scope="col">Fecha</th>
                           <th scope="col">Horas</th>
                           <th scope="col">Validación</th>
-                          <th scope="col">Detalle</th>
+                          <th scope="col">Acciones</th>
 
                         </tr>
                       </thead>
@@ -131,11 +159,17 @@ export default function StudentInternshipDetail() {
                                 {workday.isValidated ? (
                                   <i className="fa-solid fa-circle-check" style={{ color: "#19d247" }}></i>
                                 ) : (
-                                  <i className="fa-solid fa-circle-xmark" style={{ color: "#d30d0d" }}></i>
+                                  <div>
+                                      <i className="fa-solid fa-circle-xmark" style={{ color: "#d30d0d" }}></i>
+                                      <button className="btn btn-outline-success mx-2" onClick={() => validateWorkday(workday.id)}>Validar</button>
+                                  </div>
+                                  
+                                  
                                 )}
                               </td>
                               <td>
                                 <Link className='btn btn-outline-primary mx-2' to={`/student/${id}/internship/${id2}/workday/${workday.id}`}>Ver Más</Link>
+                                <button className="btn btn-danger mx-2" onClick={() => deleteWorkday(workday.id)}>Eliminar</button>
                               </td>
                             </tr>
                           ))
@@ -154,6 +188,7 @@ export default function StudentInternshipDetail() {
                 Siguiente
               </button>
             </div>
+            <button className="btn btn-outline-success" onClick={() => addWorkday()}>Registrar Día de Trabajo</button>
             <button className="btn btn-primary my-2" onClick={() => goBack()}>Volver</button>
           </div>
         </div>

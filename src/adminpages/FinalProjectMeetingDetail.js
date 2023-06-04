@@ -56,16 +56,9 @@ export default function FinalProjectMeetingDetail() {
                                             <b>Descripción: </b>
                                             {meeting.progress}
                                         </li>
-
-
-
-
-
                                     </ul>
                                 )}
                             </div>
-
-
                         </div>
                         <button className="btn btn-primary my-2" onClick={() => goBack()}>Volver</button>
                         

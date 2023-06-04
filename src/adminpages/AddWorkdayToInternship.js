@@ -3,29 +3,29 @@ import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../layout/NavbarAdmin';
 import Footer from '../layout/FooterAdmin';
-export default function AddMeetingToFinalProject() {
+export default function AddWorkdayToInternship() {
 
     let navigate = useNavigate()
 
     const { id,id2 } = useParams();
-    const [meeting, setMeeting] = useState({
-       
-    date: '',
-    hour: '',
-    duration: 0,
-    progress: ''
+    const [workday, setWorkday] = useState({
+        id: 0,
+        date: '',
+        hours: 0,
+        description: '',
+        isValidated: false
     });
 
-    const { date, hour, duration} = meeting
+    const { date, hours, description} = workday
 
     const onInputChange = (e) => {
-        setMeeting({ ...meeting, [e.target.name]: e.target.value })
+        setWorkday({ ...workday, [e.target.name]: e.target.value })
     }
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post(`http://localhost:8080/replica/v1/meetings/final_projects/${id2}`, meeting)
-        navigate(`/student/${id}/final_project/${id2}`)
+        await axios.post(`http://localhost:8080/replica/v1/workdays/internships/${id2}`, workday)
+        navigate(`/student/${id}/internship/${id2}`)
     }
 
     return (
@@ -34,7 +34,7 @@ export default function AddMeetingToFinalProject() {
             <div className="container">
                 <div className='row mb-5'>
                     <div className='col-md-6 offset-md-3 border rounded p-4 mt-5 shadow'>
-                        <h2 className='text-center m-4'>Agendar Nueva Reunión</h2>
+                        <h2 className='text-center m-4'>Registrar Día de Trabajo</h2>
                         <form onSubmit={(e) => onSubmit(e)}>
                             <div className='mb-3'>
                                 <label htmlFor='username' className='form-label'>
@@ -43,16 +43,16 @@ export default function AddMeetingToFinalProject() {
                                 <input type={"date"} className="form-control" name="date" value={date} onChange={(e) => onInputChange(e)} />
                             </div>
                             <div className='mb-3'>
-                            <label htmlFor='hour' className='form-label'>
-                                Hora
+                            <label htmlFor='hours' className='form-label'>
+                                Horas
                             </label>
-                            <input type={"text"} className="form-control" placeholder='Nombre' name="hour" value={hour} onChange={(e) => onInputChange(e)} />
+                            <input type={"number"} className="form-control" placeholder='Nombre' name="hours" value={hours} onChange={(e) => onInputChange(e)} />
                         </div>
                         <div className='mb-3'>
-                            <label htmlFor='duration' className='form-label'>
-                                Duración
+                            <label htmlFor='description' className='form-label'>
+                                Descripción
                             </label>
-                            <input type={"number"} className="form-control" placeholder='15 min' name="duration" value={duration} onChange={(e) => onInputChange(e)} />
+                            <input type={"text"} className="form-control" placeholder='Description' name="description" value={description} onChange={(e) => onInputChange(e)} />
                         </div>
                         
                             <button type="submit" className='btn btn-outline-primary'>Registrar</button>

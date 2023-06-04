@@ -63,6 +63,9 @@ export default function StudentFinalProjectDetail() {
     const goBack= async()=>{
         navigate(`/view_student_admin/${id}`)
     }
+    const addMeeting= async()=>{
+        navigate(`/student/${id}/final_project/${id2}/add_meeting`)
+    }
 
   
   return (
@@ -129,8 +132,10 @@ export default function StudentFinalProjectDetail() {
                 Siguiente
               </button>
             </div>
+            <button className="btn btn-outline-success" onClick={() => addMeeting()}>Agendar Nueva Reunión</button>
             <button className="btn btn-primary my-2" onClick={() => goBack()}>Volver</button>
           </div>
+          
         </div>
       </div>
       <Footer />
