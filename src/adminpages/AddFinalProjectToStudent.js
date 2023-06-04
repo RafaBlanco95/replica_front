@@ -77,7 +77,7 @@ export default function AddFinalProjectToStudent() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(finalProject);
+    
     await axios.patch(`http://localhost:8080/replica/v1/students/final_projects/${id}`, finalProject);
     navigate(`/students_list`);
   };

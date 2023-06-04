@@ -10,37 +10,37 @@ export default function ViewTeacherAdmin() {
     const [teacher, setTeacher] = useState({
         id: 0,
         username: '',
-        name:'',
-        lastName:'',
-        center:'',
-        login_user:{
+        name: '',
+        lastName: '',
+        center: '',
+        login_user: {
             id: 0,
-          username: '',
-          email: '',
-          password: '',
-          roles: [
-            {
-              id: 0,
-              name: ''
-            }
-          ]
+            username: '',
+            email: '',
+            password: '',
+            roles: [
+                {
+                    id: 0,
+                    name: ''
+                }
+            ]
         },
         students: [
-          {
-            id: 0,
-            name: '',
-            username: '',
-            lastName: '',
-            finalProject: {
-              id: 0,
-              title: '',
-              expositionDate: ''
+            {
+                id: 0,
+                name: '',
+                username: '',
+                lastName: '',
+                finalProject: {
+                    id: 0,
+                    title: '',
+                    expositionDate: ''
+                }
             }
-          }
         ],
-          
-        
-      });
+
+
+    });
 
     const { id } = useParams();
 
@@ -63,64 +63,64 @@ export default function ViewTeacherAdmin() {
                         <h2 className='text-center m-4'>Ficha del Profesor</h2>
                         <div className='card'>
                             <div className='card-header'>
-                            <b>Ficha del Profesor Nº:</b>
-              {teacher ? teacher.id : 'Cargando...'}
-              {/* Comprobación de nulidad antes de acceder a las propiedades */}
-              {teacher && (
-                                <ul className='list-group list-group-flush'>
-                                    <li className='list-group-item'>
-                                        <b>Nombre: </b>
-                                        {teacher.name}
-                                    </li>
-                                    <li className='list-group-item'>
-                                        <b>Apellidos: </b>
-                                        {teacher.lastName}
-                                    </li>
-                                    <li className='list-group-item'>
-                                        <b>Centro: </b>
-                                        {teacher.center}
-                                    </li>
-                                    <li className='list-group-item'>
-                                        <b>Alumnos: </b>
-                                    </li>
-                                    <li className='list-group-item'>
+                                <b>Ficha del Profesor Nº:</b>
+                                {teacher ? teacher.id : 'Cargando...'}
+                                {/* Comprobación de nulidad antes de acceder a las propiedades */}
+                                {teacher && (
+                                    <ul className='list-group list-group-flush'>
+                                        <li className='list-group-item'>
+                                            <b>Nombre: </b>
+                                            {teacher.name}
+                                        </li>
+                                        <li className='list-group-item'>
+                                            <b>Apellidos: </b>
+                                            {teacher.lastName}
+                                        </li>
+                                        <li className='list-group-item'>
+                                            <b>Centro: </b>
+                                            {teacher.center}
+                                        </li>
+                                        <li className='list-group-item'>
+                                            <b>Alumnos: </b>
+                                        </li>
+                                        <li className='list-group-item'>
 
-                                        <table class="table shadow">
-                                            <thead>
-                                                <tr class="table-primary">
-                                                    <th scope="col">Código</th>
-                                                    <th scope="col">Nombre</th>
-                                                    <th scope="col">Apellido</th>
-                                                    <th scope="col">TFG</th>
-                                                    <th scope="col">Seguimiento</th>
+                                            <table class="table shadow">
+                                                <thead>
+                                                    <tr class="table-primary">
+                                                        <th scope="col">Código</th>
+                                                        <th scope="col">Nombre</th>
+                                                        <th scope="col">Apellido</th>
+                                                        <th scope="col">TFG</th>
+                                                        <th scope="col">Seguimiento</th>
 
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {
-                                                    teacher.students.map((student, index) => (
-                                                        <tr>
-                                                            <th scope="row" key={index}>{student.id}</th>
-                                                            <td>{student.name}</td>
-                                                            <td>{student.lastName}</td>
-                                                            <td>
-        {student.finalProject ? student.finalProject.title : 'N/A'}
-        {/* Comprobación adicional para evitar el acceso a 'id' si 'finalProject' es nulo */}
-      </td>
-                                                            <td><Link className='btn btn-outline-primary mx-2' to={`/view_student_admin/${student.id}`}>Detalle Alumno</Link></td>
-                                                        </tr>
-                                                    ))
-                                                }
-                                            </tbody>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {
+                                                        teacher.students.map((student, index) => (
+                                                            <tr>
+                                                                <th scope="row" key={index}>{student.id}</th>
+                                                                <td>{student.name}</td>
+                                                                <td>{student.lastName}</td>
+                                                                <td>
+                                                                    {student.finalProject ? student.finalProject.title : 'N/A'}
+                                                                    {/* Comprobación adicional para evitar el acceso a 'id' si 'finalProject' es nulo */}
+                                                                </td>
+                                                                <td><Link className='btn btn-outline-primary mx-2' to={`/view_student_admin/${student.id}`}>Detalle Alumno</Link></td>
+                                                            </tr>
+                                                        ))
+                                                    }
+                                                </tbody>
 
-                                        </table>
-                                    </li>
-
-                                   
+                                            </table>
+                                        </li>
 
 
-                                </ul>
-                                 )}
+
+
+                                    </ul>
+                                )}
                             </div>
 
 

@@ -128,7 +128,7 @@ export default function AddInternshipToStudent() {
                         </div>
                        
                         
-                        <button type="submit" className='btn btn-outline-primary'>Registrar Cambios</button>
+                        <button type="submit" className='btn btn-outline-primary'>Asignar Práctica</button>
                         <Link className='btn btn-outline-danger mx-2' to={"/students_list"}>Cancelar</Link>
                     </form>
                 </div>

@@ -5,36 +5,34 @@ import Footer from '../layout/FooterAdmin';
 import Navbar from '../layout/NavbarAdmin';
 
 
-export default function StudentInternshipDetail() {
+export default function StudentFinalProjectDetail() {
 
   const [page, setPage] = useState(0); // Página actual
   const [totalPages, setTotalPages] = useState(0); // Total de páginas
 
-  const [internship, setInternship] = useState({
+  const [finalProject, setFinalProject] = useState({
 
     id: 0,
-    startingDate: '',
-    endingDate: '',
-    type: '',
-    totalHours: 0,
-    enterprise: '',
-    workdays: [
+    expositionDate: '',
+   title:'',
+    meetings: [
       {
-        id: 2,
+        id: 0,
         date: '',
-        hours: 0,
-        description: '',
-        isValidated: false
+        hour: '',
+        duration: 0,
+        progress: ''
       }]
 
   });
 
-  const [workday, setWorkday] = useState([{
+  const [meeting, setMeeting] = useState([{
     id: 0,
     date: '',
-    hours: 0,
-    description: '',
-    isValidated: false
+    hour:'',
+    duration: 0,
+    progress: ''
+    
   }
 
   ]);
@@ -42,22 +40,22 @@ export default function StudentInternshipDetail() {
   const { id, id2 } = useParams();
 
   useEffect(() => {
-    loadInternship()
+    loadFinalProject()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page])
 
-  const loadInternship = async () => {
-    const result = await axios.get(`http://localhost:8080/replica/v1/internships/${id2}`);
-    setInternship(result.data.data);
-    const result2 = await axios.get(`http://localhost:8080/replica/v1/internships/${id2}/workdays`, {
+  const loadFinalProject = async () => {
+    const result = await axios.get(`http://localhost:8080/replica/v1/final_projects/${id2}`);
+    setFinalProject(result.data.data);
+    const result2 = await axios.get(`http://localhost:8080/replica/v1/final_projects/${id2}/meetings`, {
       params: {
         page: page, // Página actual
         size: 5 // Tamaño de página (10 items por página en este ejemplo)
       }
     });
-    console.log(result2);
-    setWorkday(result2.data.data.content);
-    console.log(workday);
+    
+    setMeeting(result2.data.data.content);
+    
     setTotalPages(result.data.totalPages);
   };
 
@@ -66,46 +64,30 @@ export default function StudentInternshipDetail() {
         navigate(`/view_student_admin/${id}`)
     }
 
-  const totalHours = workday.reduce((sum, workday) => sum + workday.hours, 0);
+  
   return (
     <div>
       <Navbar />
       <div className="container">
         <div className='row mb-5'>
           <div className='col-md-8 offset-md-2 border rounded p-4 mt-3 shadow'>
-            <h2 className='text-center m-4'>Detalle de Práctica</h2>
+            <h2 className='text-center m-4'>Detalle de TFG</h2>
             <div className='card'>
               <div className='card-header'>
-                <b>Práctica con Código Nº:</b>
-                {internship.id}
+                <b>TFG con Código Nº:</b>
+                {finalProject.id}
                 <ul className='list-group list-group-flush'>
                   <li className='list-group-item'>
-                    <b>Fecha de Inicio: </b>
-                    {internship.startingDate}
+                    <b>Fecha de Entrega: </b>
+                    {finalProject.expositionDate}
                   </li>
                   <li className='list-group-item'>
-                    <b>Fecha Fin: </b>
-                    {internship.endingDate}
-                  </li>
-                  <li className='list-group-item'>
-                    <b>Empresa: </b>
-                    {internship.enterprise}
-                  </li>
-                  <li className='list-group-item'>
-                    <b>Modelo: </b>
-                    {internship.type}
-                  </li>
-                  <li className='list-group-item'>
-                    <b>Horas A Cumplir: </b>
-                    {internship.totalHours}
-                  </li>
-                  <li className='list-group-item'>
-                    <b>Horas Trabajadas: </b>
-                   {totalHours}
+                    <b>Título </b>
+                    {finalProject.title}
                   </li>
 
                   <li className='list-group-item'>
-                    <b>Jornadas de Trabajo: </b>
+                    <b>Reuniones: </b>
                   </li>
                   <li className='list-group-item'>
 
@@ -114,28 +96,21 @@ export default function StudentInternshipDetail() {
                         <tr class="table-primary">
                           <th scope="col">Código</th>
                           <th scope="col">Fecha</th>
-                          <th scope="col">Horas</th>
-                          <th scope="col">Validación</th>
+                          <th scope="col">Duración</th>
                           <th scope="col">Detalle</th>
 
                         </tr>
                       </thead>
                       <tbody>
                         {
-                          workday.map((workday, index) => (
+                          meeting.map((meeting, index) => (
                             <tr key={index}>
-                              <th scope="row">{workday.id}</th>
-                              <td>{workday.date}</td>
-                              <td>{workday.hours}</td>
+                              <th scope="row">{meeting.id}</th>
+                              <td>{meeting.date}</td>
+                              <td>{meeting.duration}</td>
+                              
                               <td>
-                                {workday.isValidated ? (
-                                  <i className="fa-solid fa-circle-check" style={{ color: "#19d247" }}></i>
-                                ) : (
-                                  <i className="fa-solid fa-circle-xmark" style={{ color: "#d30d0d" }}></i>
-                                )}
-                              </td>
-                              <td>
-                                <Link className='btn btn-outline-primary mx-2' to={`/student/${id}/internship/${id2}/workday/${workday.id}`}>Ver Más</Link>
+                                <Link className='btn btn-outline-primary mx-2' to={`/student/${id}/final_project/${id2}/meeting/${meeting.id}`}>Ver Más</Link>
                               </td>
                             </tr>
                           ))

@@ -99,7 +99,7 @@ export default function ViewStudentAdmin() {
                                                     <td>{student.teacher ? student.teacher.id : 'N/A'}</td>
                                                     <td>{student.teacher ? student.teacher.name : 'N/A'}</td>
                                                     <td>{student.teacher ? student.teacher.center : 'N/A'}</td>
-                                                    <td><Link className='btn btn-outline-primary mx-2' to={`/view_student_admin/${id}`}>Detalles del Profesor</Link></td>
+                                                    <td><Link className='btn btn-outline-primary mx-2' to={`/view_teacher_admin/${student.teacher.id}`}>Detalles del Profesor</Link></td>
 
                                                 </tr>
                                             </tbody>
@@ -156,7 +156,7 @@ export default function ViewStudentAdmin() {
                                                 <tr>
                                                     <td>{student.finalProject ? student.finalProject.id : 'N/A'}</td>
                                                     <td>{student.finalProject ? student.finalProject.title : 'N/A'}</td>
-                                                    <td><Link className='btn btn-outline-primary mx-2' to={`/student/${id}/finalProject_admin`}>Detalles del Proyecto</Link></td>
+                                                    <td><Link className='btn btn-outline-primary mx-2' to={`/student/${id}/final_project/${student.finalProject.id}`}>Detalles del Proyecto</Link></td>
 
                                                 </tr>
                                             </tbody>

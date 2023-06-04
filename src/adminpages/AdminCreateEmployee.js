@@ -60,7 +60,7 @@ export default function AddEmployee() {
                         </div>
                         <div className='mb-3'>
                             <label htmlFor='center' className='form-label'>
-                                Centro
+                                Empresa
                             </label>
                             <input type={"text"} className="form-control" placeholder='Escuelas Salesianas' name="center" value={center} onChange={(e) => onInputChange(e)} />
                         </div>
@@ -68,13 +68,13 @@ export default function AddEmployee() {
                                 <label htmlFor='grupo' className='form-label'>
                                     Correo Electrónico
                                 </label>
-                                <input type={"email"} className="form-control" placeholder='Email del Alumno' name="email" value={email} onChange={(e) => onInputChange(e)} />
+                                <input type={"email"} className="form-control" placeholder='Email del Tutor' name="email" value={email} onChange={(e) => onInputChange(e)} />
                             </div>
                             <div className='mb-3'>
                                 <label htmlFor='password' className='form-label'>
                                     Contraseña
                                 </label>
-                                <input type={"password"} className="form-control" placeholder='Contraseña del Alumno' name="password" value={password} onChange={(e) => onInputChange(e)} />
+                                <input type={"password"} className="form-control" placeholder='Contraseña del Tutor' name="password" value={password} onChange={(e) => onInputChange(e)} />
                             </div>
                             <button type="submit" className='btn btn-outline-primary'>Registrar</button>
                             <Link className='btn btn-outline-danger mx-2' to="/employees_list">Cancelar</Link>

@@ -68,13 +68,13 @@ export default function AddTeacher() {
                                 <label htmlFor='grupo' className='form-label'>
                                     Correo Electrónico
                                 </label>
-                                <input type={"email"} className="form-control" placeholder='Email del Alumno' name="email" value={email} onChange={(e) => onInputChange(e)} />
+                                <input type={"email"} className="form-control" placeholder='Email del Profesor' name="email" value={email} onChange={(e) => onInputChange(e)} />
                             </div>
                             <div className='mb-3'>
                                 <label htmlFor='password' className='form-label'>
                                     Contraseña
                                 </label>
-                                <input type={"password"} className="form-control" placeholder='Contraseña del Alumno' name="password" value={password} onChange={(e) => onInputChange(e)} />
+                                <input type={"password"} className="form-control" placeholder='Contraseña del Profesor' name="password" value={password} onChange={(e) => onInputChange(e)} />
                             </div>
                             <button type="submit" className='btn btn-outline-primary'>Registrar</button>
                             <Link className='btn btn-outline-danger mx-2' to="/teachers_list">Cancelar</Link>

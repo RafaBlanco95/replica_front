@@ -5,32 +5,32 @@ import Footer from '../layout/FooterAdmin';
 import Navbar from '../layout/NavbarAdmin';
 
 
-export default function InternshipWorkdayDetail() {
+export default function FinalProjectMeetingDetail() {
    
-    const [workday, setWorkday] = useState({
+    const [meeting, setMeeting] = useState({
         id: 0,
-        date: '',
-        hours: 0,
-        description: '',
-        isValidated: false
+    date: '',
+    hour: '',
+    duration: 0,
+    progress: ''
 
     });
 
     const { id,id2, id3 } = useParams();
 
     useEffect(() => {
-        loadWorkday()
+        loadMeeting()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const loadWorkday = async () => {
-        const result = await axios.get(`http://localhost:8080/replica/v1/workdays/${id3}`)
+    const loadMeeting = async () => {
+        const result = await axios.get(`http://localhost:8080/replica/v1/meetings/${id3}`)
 
-        setWorkday(result.data.data)
+        setMeeting(result.data.data)
     }
     let navigate = useNavigate()
     const goBack= async()=>{
-        navigate(`/student/${id}/internship/${id2}`)
+        navigate(`/student/${id}/final_project/${id2}`)
     }
     return (
         <div>
@@ -38,31 +38,23 @@ export default function InternshipWorkdayDetail() {
             <div className="container">
                 <div className='row mb-5'>
                     <div className='col-md-8 offset-md-2 border rounded p-4 mt-3 shadow'>
-                        <h2 className='text-center m-4'>Jornada día {workday.date}</h2>
+                        <h2 className='text-center m-4'>Reunión {meeting.date} {meeting.hour} </h2>
                         <div className='card'>
                             <div className='card-header'>
-                                <b>Ficha diaria con código Nº:</b>
-                                {workday ? workday.id : 'Cargando...'}
+                                <b>Reuninón con código Nº:</b>
+                                {meeting ? meeting.id : 'Cargando...'}
                                 {/* Comprobación de nulidad antes de acceder a las propiedades */}
-                                {workday && (
+                                {meeting && (
                                     <ul className='list-group list-group-flush'>
                                        
                                         <li className='list-group-item'>
-                                            <b>Horas trabajadas: </b>
-                                            {workday.hours}
+                                            <b>Tiempo de la reunión: </b>
+                                            {meeting.duration}
                                         </li>
                                         
                                         <li className='list-group-item'>
-                                            <b>Validación: </b>
-                                            {workday.isValidated ? (
-                                                <i className="fa-solid fa-circle-check" style={{ color: "#19d247" }}></i>
-                                            ) : (
-                                                <i className="fa-solid fa-circle-xmark" style={{ color: "#d30d0d" }}></i>
-                                            )}
-                                        </li>
-                                        <li className='list-group-item'>
                                             <b>Descripción: </b>
-                                            {workday.description}
+                                            {meeting.progress}
                                         </li>
 
 

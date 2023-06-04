@@ -32,6 +32,8 @@ import AddTeacher from './adminpages/AdminCreateTeacher';
 import AddEmployee from './adminpages/AdminCreateEmployee';
 import CreateUsers from './adminpages/CreateUsers';
 import InternshipWorkdayDetail from './adminpages/InternshipWorkdayDetail';
+import StudentFinalProjectDetail from './adminpages/StudentFinalProjectDetail';
+import FinalProjectMeetingDetail from './adminpages/FinalProjectMeetingDetail';
 
 
 
@@ -71,7 +73,9 @@ const App = () => {
         <Route path="/view_teacher_admin/:id" element={<ViewTeacherAdmin />} />
         <Route path="/view_employee_admin/:id" element={<ViewEmployeeAdmin />} />
         <Route path="/student/:id/internship/:id2" element={<StudentInternshipDetail />} />
+        <Route path="/student/:id/final_project/:id2" element={<StudentFinalProjectDetail />} />
         <Route path="/student/:id/internship/:id2/workday/:id3" element={<InternshipWorkdayDetail />} />
+        <Route path="/student/:id/final_project/:id2/meeting/:id3" element={<FinalProjectMeetingDetail />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
