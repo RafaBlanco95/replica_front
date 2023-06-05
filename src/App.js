@@ -36,6 +36,8 @@ import StudentFinalProjectDetail from './adminpages/StudentFinalProjectDetail';
 import FinalProjectMeetingDetail from './adminpages/FinalProjectMeetingDetail';
 import AddMeetingToFinalProject from './adminpages/AddMeetingToFinalProject';
 import AddWorkdayToInternship from './adminpages/AddWorkdayToInternship';
+import Internships from './studentpages/internships';
+import ViewInternshipDetail from './studentpages/ViewInternshipDetail';
 
 
 
@@ -80,6 +82,8 @@ const App = () => {
         <Route path="/student/:id/final_project/:id2/meeting/:id3" element={<FinalProjectMeetingDetail />} />
         <Route path="/student/:id/final_project/:id2/add_meeting" element={<AddMeetingToFinalProject />} />
         <Route path="/student/:id/internship/:id2/add_workday" element={<AddWorkdayToInternship />} />
+        <Route path="/internships" element={<Internships />} />
+        <Route path="/internships/:id" element={<ViewInternshipDetail />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>

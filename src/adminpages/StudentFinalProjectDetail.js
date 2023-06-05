@@ -67,7 +67,11 @@ export default function StudentFinalProjectDetail() {
         navigate(`/student/${id}/final_project/${id2}/add_meeting`)
     }
 
-  
+    const deleteMeeting = async (idMeeting) => {
+      const result4=await axios.delete(`http://localhost:8080/replica/v1/meetings/${idMeeting}`);
+      console.log(result4);
+      loadFinalProject()
+  };
   return (
     <div>
       <Navbar />
@@ -114,6 +118,7 @@ export default function StudentFinalProjectDetail() {
                               
                               <td>
                                 <Link className='btn btn-outline-primary mx-2' to={`/student/${id}/final_project/${id2}/meeting/${meeting.id}`}>Ver Más</Link>
+                                <button className="btn btn-danger mx-2" onClick={() => deleteMeeting(meeting.id)}>Eliminar</button>
                               </td>
                             </tr>
                           ))

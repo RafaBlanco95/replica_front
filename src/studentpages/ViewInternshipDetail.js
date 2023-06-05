@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import Footer from '../layout/FooterAdmin';
-import Navbar from '../layout/NavbarAdmin';
+import Footer from '../layout/FooterStudent';
+import Navbar from '../layout/NavbarStudent';
 
 
-export default function StudentInternshipDetail() {
+export default function ViewInternshipDetail() {
 
   const [page, setPage] = useState(0); // Página actual
   const [totalPages, setTotalPages] = useState(0); // Total de páginas
@@ -39,7 +39,7 @@ export default function StudentInternshipDetail() {
 
   ]);
 
-  const { id, id2 } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     loadInternship()
@@ -49,9 +49,9 @@ export default function StudentInternshipDetail() {
   
 
   const loadInternship = async () => {
-    const result = await axios.get(`http://localhost:8080/replica/v1/internships/${id2}`);
+    const result = await axios.get(`http://localhost:8080/replica/v1/internships/${id}`);
     setInternship(result.data.data);
-    const result2 = await axios.get(`http://localhost:8080/replica/v1/internships/${id2}/workdays`, {
+    const result2 = await axios.get(`http://localhost:8080/replica/v1/internships/${id}/workdays`, {
       params: {
         page: page, // Página actual
         size: 5 // Tamaño de página (10 items por página en este ejemplo)
@@ -65,11 +65,11 @@ export default function StudentInternshipDetail() {
 
   let navigate = useNavigate()
     const goBack= async()=>{
-        navigate(`/view_student_admin/${id}`)
+        navigate(`/internships`)
     }
 
     const addWorkday= async()=>{
-      navigate(`/student/${id}/internship/${id2}/add_workday`)
+      navigate(`/internships/${id}/add_workday`)
   }
 
   const validateWorkday = async (workdayId) => {
@@ -168,7 +168,7 @@ export default function StudentInternshipDetail() {
                                 )}
                               </td>
                               <td>
-                                <Link className='btn btn-outline-primary mx-2' to={`/student/${id}/internship/${id2}/workday/${workday.id}`}>Ver Más</Link>
+                                <Link className='btn btn-outline-primary mx-2' to={`/internship/${id}/workday/${workday.id}`}>Ver Más</Link>
                                 <button className="btn btn-danger mx-2" onClick={() => deleteWorkday(workday.id)}>Eliminar</button>
                               </td>
                             </tr>
