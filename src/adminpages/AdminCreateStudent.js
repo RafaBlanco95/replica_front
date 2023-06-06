@@ -27,7 +27,7 @@ export default function AddStudent() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post(`http://localhost:8080/replica/v1/signup`, user)
+        await axios.post(`https://replicarepo-production.up.railway.app/replica/v1/signup`, user)
         navigate(`/complete_student/teacher/${username}`)
     }
 

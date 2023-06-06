@@ -17,7 +17,7 @@ export default function EmployeeList() {
 
     const token = localStorage.getItem('token');
     const loadEmployees = async () => {
-        const result = await axios.get("http://localhost:8080/replica/v1/employees", {
+        const result = await axios.get("https://replicarepo-production.up.railway.app/replica/v1/employees", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -26,12 +26,12 @@ export default function EmployeeList() {
     };
 
     const deleteEmployee = async (id,username) => {
-        await axios.delete(`http://localhost:8080/replica/v1/employees/${id}`, {
+        await axios.delete(`https://replicarepo-production.up.railway.app/replica/v1/employees/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         });
-        await axios.delete(`http://localhost:8080/replica/v1/users/username/${username}`, {
+        await axios.delete(`https://replicarepo-production.up.railway.app/replica/v1/users/username/${username}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

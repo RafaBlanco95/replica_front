@@ -45,9 +45,9 @@ export default function StudentFinalProjectDetail() {
   }, [page])
 
   const loadFinalProject = async () => {
-    const result = await axios.get(`http://localhost:8080/replica/v1/final_projects/${id2}`);
+    const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/final_projects/${id2}`);
     setFinalProject(result.data.data);
-    const result2 = await axios.get(`http://localhost:8080/replica/v1/final_projects/${id2}/meetings`, {
+    const result2 = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/final_projects/${id2}/meetings`, {
       params: {
         page: page, // Página actual
         size: 5 // Tamaño de página (10 items por página en este ejemplo)
@@ -68,7 +68,7 @@ export default function StudentFinalProjectDetail() {
     }
 
     const deleteMeeting = async (idMeeting) => {
-      const result4=await axios.delete(`http://localhost:8080/replica/v1/meetings/${idMeeting}`);
+      const result4=await axios.delete(`https://replicarepo-production.up.railway.app/replica/v1/meetings/${idMeeting}`);
       console.log(result4);
       loadFinalProject()
   };

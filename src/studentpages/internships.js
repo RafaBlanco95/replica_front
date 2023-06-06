@@ -16,7 +16,7 @@ export default function Internships() {
 
     const username = localStorage.getItem('username');
     const loadInternships = async () => {
-        const result = await axios.get(`http://localhost:8080/replica/v1/internships/username/${username}`);
+        const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/internships/username/${username}`);
         console.log(result);
         setInternships(result.data.data);
     };

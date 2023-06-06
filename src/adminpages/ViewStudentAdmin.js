@@ -57,7 +57,7 @@ export default function ViewStudentAdmin() {
     }, [])
 
     const loadStudent = async () => {
-        const result = await axios.get(`http://localhost:8080/replica/v1/students/${id}`)
+        const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/students/${id}`)
         setStudent(result.data.data)
     }
     return (

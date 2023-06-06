@@ -26,7 +26,7 @@ const AdminProfile = () => {
             try {
                 const token = localStorage.getItem('token');
                 const username = localStorage.getItem('username');
-                const response = await axios.get(`http://localhost:8080/replica/v1/users/username/${username}`, {
+                const response = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/users/username/${username}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

@@ -17,7 +17,7 @@ export default function AddEmployeeToStudent() {
 
     const token = localStorage.getItem('token');
     const loadEmployees = async () => {
-        const result = await axios.get("http://localhost:8080/replica/v1/employees", {
+        const result = await axios.get("https://replicarepo-production.up.railway.app/replica/v1/employees", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -27,7 +27,7 @@ export default function AddEmployeeToStudent() {
 
     const associateEmployee = async (id) => {
         
-        await axios.patch(`http://localhost:8080/replica/v1/students/${createdUser}/employees/${id}`, {
+        await axios.patch(`https://replicarepo-production.up.railway.app/replica/v1/students/${createdUser}/employees/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

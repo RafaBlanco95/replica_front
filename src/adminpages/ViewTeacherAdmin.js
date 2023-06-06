@@ -50,7 +50,7 @@ export default function ViewTeacherAdmin() {
     }, [])
 
     const loadTeacher = async () => {
-        const result = await axios.get(`http://localhost:8080/replica/v1/teachers/${id}`)
+        const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/teachers/${id}`)
         console.log(result.data.data);
         setTeacher(result.data.data)
     }

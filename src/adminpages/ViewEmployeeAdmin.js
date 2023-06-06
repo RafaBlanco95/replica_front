@@ -83,7 +83,7 @@ export default function ViewEmployeeAdmin() {
     }, [])
 
     const loadEmployee = async () => {
-        const result = await axios.get(`http://localhost:8080/replica/v1/employees/${id}`)
+        const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/employees/${id}`)
         setEmployee(result.data.data)
     }
     return (

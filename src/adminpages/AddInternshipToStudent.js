@@ -69,7 +69,7 @@ export default function AddInternshipToStudent() {
 
   useEffect(() => {
     const loadUser = async () => {
-      const result = await axios.get(`http://localhost:8080/replica/v1/students/username/${createdUser}`);
+      const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/students/username/${createdUser}`);
       setStudent(result.data.data);
       
     };
@@ -80,7 +80,7 @@ export default function AddInternshipToStudent() {
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log(internship);
-    await axios.patch(`http://localhost:8080/replica/v1/students/internships/${id}`, internship);
+    await axios.patch(`https://replicarepo-production.up.railway.app/replica/v1/students/internships/${id}`, internship);
     navigate(`/complete_student/employee/${createdUser}`);
   };
 

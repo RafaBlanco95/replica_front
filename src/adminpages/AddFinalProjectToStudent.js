@@ -67,7 +67,7 @@ export default function AddFinalProjectToStudent() {
 
   useEffect(() => {
     const loadUser = async () => {
-      const result = await axios.get(`http://localhost:8080/replica/v1/students/username/${createdUser}`);
+      const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/students/username/${createdUser}`);
       setStudent(result.data.data);
       
     };
@@ -78,7 +78,7 @@ export default function AddFinalProjectToStudent() {
   const onSubmit = async (e) => {
     e.preventDefault();
     
-    await axios.patch(`http://localhost:8080/replica/v1/students/final_projects/${id}`, finalProject);
+    await axios.patch(`https://replicarepo-production.up.railway.app/replica/v1/students/final_projects/${id}`, finalProject);
     navigate(`/students_list`);
   };
 

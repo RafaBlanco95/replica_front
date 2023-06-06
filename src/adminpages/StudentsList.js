@@ -17,7 +17,7 @@ export default function StudentsList() {
 
     const token = localStorage.getItem('token');
     const loadStudents = async () => {
-        const result = await axios.get("http://localhost:8080/replica/v1/students", {
+        const result = await axios.get("https://replicarepo-production.up.railway.app/replica/v1/students", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -26,12 +26,12 @@ export default function StudentsList() {
     };
 
     const deleteStudent = async (id,username) => {
-        await axios.delete(`http://localhost:8080/replica/v1/students/${id}`, {
+        await axios.delete(`https://replicarepo-production.up.railway.app/replica/v1/students/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         });
-        await axios.delete(`http://localhost:8080/replica/v1/users/username/${username}`, {
+        await axios.delete(`https://replicarepo-production.up.railway.app/replica/v1/users/username/${username}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },

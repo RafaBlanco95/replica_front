@@ -29,7 +29,7 @@ export default function EditEmployee() {
 
   useEffect(() => {
     const loadUser = async () => {
-      const result = await axios.get(`http://localhost:8080/replica/v1/employees/${id}`);
+      const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/employees/${id}`);
       setUser(result.data.data.login_user);
       setStudent(result.data.data);
     };
@@ -39,8 +39,8 @@ export default function EditEmployee() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.patch(`http://localhost:8080/replica/v1/employees/${id}`, student);
-    await axios.put(`http://localhost:8080/replica/v1/users/${user.id}`, user);
+    await axios.patch(`https://replicarepo-production.up.railway.app/replica/v1/employees/${id}`, student);
+    await axios.put(`https://replicarepo-production.up.railway.app/replica/v1/users/${user.id}`, user);
     localStorage.removeItem('username');
     localStorage.setItem('username', username);
     navigate(`/employee_profile`);

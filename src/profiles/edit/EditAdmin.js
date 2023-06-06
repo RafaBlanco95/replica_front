@@ -26,7 +26,7 @@ export default function EditAdmin() {
 
   useEffect(() => {
     const loadUser = async () => {
-      const result = await axios.get(`http://localhost:8080/replica/v1/users/${id}`);
+      const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/users/${id}`);
       setUser(result.data.data);
     };
     loadUser();
@@ -35,7 +35,7 @@ export default function EditAdmin() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:8080/replica/v1/users/${user.id}`, user);
+    await axios.put(`https://replicarepo-production.up.railway.app/replica/v1/users/${user.id}`, user);
     localStorage.removeItem('username');
     localStorage.setItem('username', username);
     navigate(`/admin_profile`);

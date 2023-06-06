@@ -22,7 +22,7 @@ const Login = () => {
     try {
       console.log(username);
       console.log(password);
-      const response = await axios.post('http://localhost:8080/replica/v1/signin', { username, password });
+      const response = await axios.post('https://replicarepo-production.up.railway.app/replica/v1/signin', { username, password });
       const { token, roles } = response.data;
       const role = roles[0];
   

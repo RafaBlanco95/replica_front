@@ -28,7 +28,7 @@ export default function AddEmployee() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post(`http://localhost:8080/replica/v1/signup`, user)
+        await axios.post(`https://replicarepo-production.up.railway.app/replica/v1/signup`, user)
         navigate(`/employees_list`)
     }
 

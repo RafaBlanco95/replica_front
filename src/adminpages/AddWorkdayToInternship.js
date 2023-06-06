@@ -24,7 +24,7 @@ export default function AddWorkdayToInternship() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await axios.post(`http://localhost:8080/replica/v1/workdays/internships/${id2}`, workday)
+        await axios.post(`https://replicarepo-production.up.railway.app/replica/v1/workdays/internships/${id2}`, workday)
         navigate(`/student/${id}/internship/${id2}`)
     }
 

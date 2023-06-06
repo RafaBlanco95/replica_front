@@ -68,7 +68,7 @@ export default function EditStudentAdmin() {
 
   useEffect(() => {
     const loadUser = async () => {
-      const result = await axios.get(`http://localhost:8080/replica/v1/students/${id}`);
+      const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/students/${id}`);
       setUser(result.data.data.login_user);
       setStudent(result.data.data);
     };
@@ -78,8 +78,8 @@ export default function EditStudentAdmin() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:8080/replica/v1/students/${id}`, student);
-    await axios.put(`http://localhost:8080/replica/v1/users/${user.id}`, user);
+    await axios.put(`https://replicarepo-production.up.railway.app/replica/v1/students/${id}`, student);
+    await axios.put(`https://replicarepo-production.up.railway.app/replica/v1/users/${user.id}`, user);
     localStorage.removeItem('username');
     localStorage.setItem('username', username);
     navigate(`/view_student_admin/${id}`);

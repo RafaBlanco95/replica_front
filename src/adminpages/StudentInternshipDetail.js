@@ -49,9 +49,9 @@ export default function StudentInternshipDetail() {
   
 
   const loadInternship = async () => {
-    const result = await axios.get(`http://localhost:8080/replica/v1/internships/${id2}`);
+    const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/internships/${id2}`);
     setInternship(result.data.data);
-    const result2 = await axios.get(`http://localhost:8080/replica/v1/internships/${id2}/workdays`, {
+    const result2 = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/internships/${id2}/workdays`, {
       params: {
         page: page, // Página actual
         size: 5 // Tamaño de página (10 items por página en este ejemplo)
@@ -74,7 +74,7 @@ export default function StudentInternshipDetail() {
 
   const validateWorkday = async (workdayId) => {
     try {
-      const result3 = await axios.patch(`http://localhost:8080/replica/v1/workdays/${workdayId}`);
+      const result3 = await axios.patch(`https://replicarepo-production.up.railway.app/replica/v1/workdays/${workdayId}`);
       const updatedWorkday = result3.data.data;
       setWorkday((prevWorkday) => {
         return prevWorkday.map((workday) => {
@@ -90,7 +90,7 @@ export default function StudentInternshipDetail() {
   };
 
   const deleteWorkday = async (idWorkday) => {
-    const result4=await axios.delete(`http://localhost:8080/replica/v1/workdays/${idWorkday}`);
+    const result4=await axios.delete(`https://replicarepo-production.up.railway.app/replica/v1/workdays/${idWorkday}`);
     console.log(result4);
     loadInternship()
 };
