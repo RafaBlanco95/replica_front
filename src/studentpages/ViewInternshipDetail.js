@@ -72,22 +72,7 @@ export default function ViewInternshipDetail() {
       navigate(`/internships/${id}/add_workday`)
   }
 
-  const validateWorkday = async (workdayId) => {
-    try {
-      const result3 = await axios.patch(`https://replicarepo-production.up.railway.app/replica/v1/workdays/${workdayId}`);
-      const updatedWorkday = result3.data.data;
-      setWorkday((prevWorkday) => {
-        return prevWorkday.map((workday) => {
-          if (workday.id === updatedWorkday.id) {
-            return updatedWorkday;
-          }
-          return workday;
-        });
-      });
-    } catch (error) {
-      console.error('Error al validar el día de trabajo:', error);
-    }
-  };
+  
 
   const deleteWorkday = async (idWorkday) => {
     const result4=await axios.delete(`https://replicarepo-production.up.railway.app/replica/v1/workdays/${idWorkday}`);
@@ -161,7 +146,6 @@ export default function ViewInternshipDetail() {
                                 ) : (
                                   <div>
                                       <i className="fa-solid fa-circle-xmark" style={{ color: "#d30d0d" }}></i>
-                                      <button className="btn btn-outline-success mx-2" onClick={() => validateWorkday(workday.id)}>Validar</button>
                                   </div>
                                   
                                   

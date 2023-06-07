@@ -38,6 +38,7 @@ import AddMeetingToFinalProject from './adminpages/AddMeetingToFinalProject';
 import AddWorkdayToInternship from './adminpages/AddWorkdayToInternship';
 import Internships from './studentpages/internships';
 import ViewInternshipDetail from './studentpages/ViewInternshipDetail';
+import AddWorkdayToInternshipStudent from './studentpages/AddWorkdayToInternshipStudent';
 
 
 
@@ -84,6 +85,7 @@ const App = () => {
         <Route path="/student/:id/internship/:id2/add_workday" element={<AddWorkdayToInternship />} />
         <Route path="/internships" element={<Internships />} />
         <Route path="/internships/:id" element={<ViewInternshipDetail />} />
+        <Route path="/internships/:id/add_workday" element={<AddWorkdayToInternshipStudent />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
