@@ -36,9 +36,13 @@ import StudentFinalProjectDetail from './adminpages/StudentFinalProjectDetail';
 import FinalProjectMeetingDetail from './adminpages/FinalProjectMeetingDetail';
 import AddMeetingToFinalProject from './adminpages/AddMeetingToFinalProject';
 import AddWorkdayToInternship from './adminpages/AddWorkdayToInternship';
-import Internships from './studentpages/internships';
+import Internships from './studentpages/Internships';
 import ViewInternshipDetail from './studentpages/ViewInternshipDetail';
 import AddWorkdayToInternshipStudent from './studentpages/AddWorkdayToInternshipStudent';
+import InternshipWorkdayDetailStudent from './studentpages/InternshipWorkdayDetailStudent';
+import FinalProject from './studentpages/FinalProject';
+import AddMeetingToFinalProjectStudent from './studentpages/AddMeetingToFinalProjectStudent';
+import FinalProjectMeetingDetailStudent from './studentpages/FinalProjectMeetingDetailStudent';
 
 
 
@@ -85,7 +89,11 @@ const App = () => {
         <Route path="/student/:id/internship/:id2/add_workday" element={<AddWorkdayToInternship />} />
         <Route path="/internships" element={<Internships />} />
         <Route path="/internships/:id" element={<ViewInternshipDetail />} />
+        <Route path="/internships/:id/workday/:id2" element={<InternshipWorkdayDetailStudent />} />
         <Route path="/internships/:id/add_workday" element={<AddWorkdayToInternshipStudent />} />
+        <Route path="/final_project" element={<FinalProject />} />
+        <Route path="/final_project/:id/add_meeting" element={<AddMeetingToFinalProjectStudent />} />
+        <Route path="/final_project/:id/meeting/:id2" element={<FinalProjectMeetingDetailStudent />} />
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>

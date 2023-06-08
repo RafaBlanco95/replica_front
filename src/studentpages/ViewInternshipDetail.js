@@ -152,7 +152,7 @@ export default function ViewInternshipDetail() {
                                 )}
                               </td>
                               <td>
-                                <Link className='btn btn-outline-primary mx-2' to={`/internship/${id}/workday/${workday.id}`}>Ver Más</Link>
+                                <Link className='btn btn-outline-primary mx-2' to={`/internships/${id}/workday/${workday.id}`}>Ver Más</Link>
                                 <button className="btn btn-danger mx-2" onClick={() => deleteWorkday(workday.id)}>Eliminar</button>
                               </td>
                             </tr>

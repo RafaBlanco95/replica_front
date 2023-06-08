@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import Footer from '../layout/FooterAdmin';
-import Navbar from '../layout/NavbarAdmin';
+import Footer from '../layout/FooterStudent';
+import Navbar from '../layout/NavbarStudent';
 
 
-export default function FinalProjectMeetingDetail() {
+export default function FinalProjectMeetingDetailStudent() {
    
     const [meeting, setMeeting] = useState({
         id: 0,
@@ -16,7 +16,8 @@ export default function FinalProjectMeetingDetail() {
 
     });
 
-    const { id,id2, id3 } = useParams();
+  
+    const { id2 } = useParams();
 
     useEffect(() => {
         loadMeeting()
@@ -24,13 +25,15 @@ export default function FinalProjectMeetingDetail() {
     }, [])
 
     const loadMeeting = async () => {
-        const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/meetings/${id3}`)
+        const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/meetings/${id2}`)
 
         setMeeting(result.data.data)
+        console.log(result);
+        
     }
     let navigate = useNavigate()
     const goBack= async()=>{
-        navigate(`/student/${id}/final_project/${id2}`)
+        navigate(`/final_project`)
     }
     return (
         <div>

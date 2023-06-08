@@ -10,7 +10,7 @@ export default function Footer() {
                 <ul class="list-inline">
                     <li class="list-inline-item text-light"><Link to="/">Inicio</Link></li>
                     <li class="list-inline-item text-light"><Link to="/internships">Prácticas</Link></li>
-                    <li class="list-inline-item text-light"><Link to="/finalProject">TFG</Link></li>
+                    <li class="list-inline-item text-light"><Link to="/final_project">TFG</Link></li>
                     <li class="list-inline-item text-light"><Link to="/student_profile"> Mi perfil</Link></li>
                    
                 </ul>
