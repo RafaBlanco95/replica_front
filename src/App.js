@@ -36,7 +36,7 @@ import StudentFinalProjectDetail from './adminpages/StudentFinalProjectDetail';
 import FinalProjectMeetingDetail from './adminpages/FinalProjectMeetingDetail';
 import AddMeetingToFinalProject from './adminpages/AddMeetingToFinalProject';
 import AddWorkdayToInternship from './adminpages/AddWorkdayToInternship';
-import Internships from './studentpages/Internships';
+import Internships from './studentpages/internships';
 import ViewInternshipDetail from './studentpages/ViewInternshipDetail';
 import AddWorkdayToInternshipStudent from './studentpages/AddWorkdayToInternshipStudent';
 import InternshipWorkdayDetailStudent from './studentpages/InternshipWorkdayDetailStudent';
