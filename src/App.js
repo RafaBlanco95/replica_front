@@ -43,6 +43,18 @@ import InternshipWorkdayDetailStudent from './studentpages/InternshipWorkdayDeta
 import FinalProject from './studentpages/FinalProject';
 import AddMeetingToFinalProjectStudent from './studentpages/AddMeetingToFinalProjectStudent';
 import FinalProjectMeetingDetailStudent from './studentpages/FinalProjectMeetingDetailStudent';
+import TeacherStudentsList from './teacherpages/TeacherStudentsList';
+import ViewStudentTeacher from './teacherpages/ViewStudentTeacher';
+import TeacherStudentInternshipDetail from './teacherpages/TeacherStudentInternshipDetail';
+import TeacherStudentInternshipWorkdayDetail from './teacherpages/TeacherStudentInternshipWorkdayDetail';
+import TeacherStudentFinalProjectDetail from './teacherpages/TeacherStudentFinalProjectDetail';
+import TeacherAddMeetingToFinalProject from './teacherpages/TeacherAddMeetingToFinalProject';
+import TeacherStudentFinalProjectMeetingDetail from './teacherpages/TeacherStudentFinalProjectMeetingDetail';
+import EmployeeInternships from './employeepages/EmployeeInternships';
+import EmployeeInternshipDetail from './employeepages/EmployeeInternshipDetail';
+import ViewStudentEmployee from './employeepages/ViewStudentEmployee';
+import EmployeeInternshipWorkdayDetail from './employeepages/EmployeeInternshipWorkdayDetail';
+
 
 
 
@@ -94,6 +106,18 @@ const App = () => {
         <Route path="/final_project" element={<FinalProject />} />
         <Route path="/final_project/:id/add_meeting" element={<AddMeetingToFinalProjectStudent />} />
         <Route path="/final_project/:id/meeting/:id2" element={<FinalProjectMeetingDetailStudent />} />
+        <Route path="/teacher_students" element={<TeacherStudentsList />} />
+        <Route path="/view_student_teacher/:id" element={<ViewStudentTeacher />} />
+        <Route path="/teacher/student/:id/internship/:id2" element={<TeacherStudentInternshipDetail />} />
+        <Route path="/teacher/student/:id/internship/:id2/workday/:id3" element={<TeacherStudentInternshipWorkdayDetail />} />
+        <Route path="/teacher/student/:id/final_project/:id2" element={<TeacherStudentFinalProjectDetail />} />
+        <Route path="/teacher/student/:id/final_project/:id2/add_meeting" element={<TeacherAddMeetingToFinalProject />} />
+        <Route path="/teacher/student/:id/final_project/:id2/meeting/:id3" element={<TeacherStudentFinalProjectMeetingDetail />} />
+        <Route path="/employee_internships" element={<EmployeeInternships />} />
+        <Route path="/employee/internships/:id" element={<EmployeeInternshipDetail />} />
+        <Route path="/employee/internships/:id2/student/:id" element={<ViewStudentEmployee />} />
+        <Route path="/employee/internships/:id/workday/:id2" element={<EmployeeInternshipWorkdayDetail />} />
+        
         <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
     </Router>

@@ -22,7 +22,7 @@ export default function NavbarEmployee() {
                 <Link class="nav-link active" aria-current="page" to="/">Inicio</Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link" to="/employee_internship">Prácticas Tuteladas</Link>
+                <Link class="nav-link" to="/employee_internships">Prácticas Tuteladas</Link>
               </li>
             </ul>
             

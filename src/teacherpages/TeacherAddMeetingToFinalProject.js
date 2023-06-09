@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import Navbar from '../layout/NavbarAdmin';
-import Footer from '../layout/FooterAdmin';
-export default function AddMeetingToFinalProjectStudent() {
+import { useNavigate, useParams } from 'react-router-dom';
+import Navbar from '../layout/NavbarTeacher';
+import Footer from '../layout/FooterTeacher';
+export default function TeacherAddMeetingToFinalProject() {
 
     let navigate = useNavigate()
 
-    const { id } = useParams();
+    const { id,id2 } = useParams();
     const [meeting, setMeeting] = useState({
        
     date: '',
@@ -22,11 +22,13 @@ export default function AddMeetingToFinalProjectStudent() {
         setMeeting({ ...meeting, [e.target.name]: e.target.value })
     }
 
+    const goBack= async()=>{
+        navigate(`/teacher/student/${id}/final_project/${id2}`)
+    }
     const onSubmit = async (e) => {
-        
         e.preventDefault();
-        await axios.post(`https://replicarepo-production.up.railway.app/replica/v1/meetings/final_projects/${id}`, meeting)
-        navigate(`/final_project`)
+        await axios.post(`https://replicarepo-production.up.railway.app/replica/v1/meetings/final_projects/${id2}`, meeting)
+        navigate(`/teacher/student/${id}/final_project/${id2}`)
     }
 
     return (
@@ -51,7 +53,7 @@ export default function AddMeetingToFinalProjectStudent() {
                         </div>
                         <div className='mb-3'>
                             <label htmlFor='duration' className='form-label'>
-                                Duración
+                                Duración en minutos
                             </label>
                             <input type={"number"} className="form-control" placeholder='15' name="duration" value={duration} onChange={(e) => onInputChange(e)} />
                         </div>
@@ -61,8 +63,9 @@ export default function AddMeetingToFinalProjectStudent() {
                             </label>
                             <input type={"text"} className="form-control" placeholder='Descripción' name="progress" value={progress} onChange={(e) => onInputChange(e)} />
                         </div>
+                        
                             <button type="submit" className='btn btn-outline-primary'>Registrar</button>
-                            <Link className='btn btn-outline-danger mx-2' to="/final_project">Cancelar</Link>
+                            <button className="btn btn-primary my-2" onClick={() => goBack()}>Cancelar</button>
                         </form>
                     </div>
                 </div>

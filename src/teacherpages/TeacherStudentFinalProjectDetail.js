@@ -1,16 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import Footer from '../layout/FooterStudent';
-import Navbar from '../layout/NavbarStudent';
+import { Link, useParams, useNavigate } from 'react-router-dom'
+import Footer from '../layout/FooterTeacher';
+import Navbar from '../layout/NavbarTeacher';
 
 
-export default function FinalProject() {
+export default function TeacherStudentFinalProjectDetail() {
 
   const [page, setPage] = useState(0); // Página actual
   const [totalPages, setTotalPages] = useState(0); // Total de páginas
-  
-
 
   const [finalProject, setFinalProject] = useState({
 
@@ -39,7 +37,7 @@ export default function FinalProject() {
 
   ]);
 
- 
+  const { id, id2 } = useParams();
 
   useEffect(() => {
     loadFinalProject()
@@ -47,10 +45,9 @@ export default function FinalProject() {
   }, [page])
 
   const loadFinalProject = async () => {
-    const username = localStorage.getItem('username');
-    const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/students/username/${username}`);
-    setFinalProject(result.data.data.finalProject);
-    const result2 = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/final_projects/${result.data.data.finalProject.id}/meetings`, {
+    const result = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/final_projects/${id2}`);
+    setFinalProject(result.data.data);
+    const result2 = await axios.get(`https://replicarepo-production.up.railway.app/replica/v1/final_projects/${id2}/meetings`, {
       params: {
         page: page, // Página actual
         size: 5 // Tamaño de página (10 items por página en este ejemplo)
@@ -60,13 +57,14 @@ export default function FinalProject() {
     setMeeting(result2.data.data.content);
     
     setTotalPages(result2.data.data.page.totalPages);
-    
   };
 
   let navigate = useNavigate()
-    
+    const goBack= async()=>{
+        navigate(`/view_student_teacher/${id}`)
+    }
     const addMeeting= async()=>{
-        navigate(`/final_project/${finalProject.id}/add_meeting`)
+        navigate(`/teacher/student/${id}/final_project/${id2}/add_meeting`)
     }
 
     const deleteMeeting = async (idMeeting) => {
@@ -119,7 +117,7 @@ export default function FinalProject() {
                               <td>{meeting.hour}</td>
                               
                               <td>
-                                <Link className='btn btn-outline-primary mx-2' to={`/final_project/${finalProject.id}/meeting/${meeting.id}`}>Ver Más</Link>
+                                <Link className='btn btn-outline-primary mx-2' to={`/teacher/student/${id}/final_project/${id2}/meeting/${meeting.id}`}>Ver Más</Link>
                                 <button className="btn btn-danger mx-2" onClick={() => deleteMeeting(meeting.id)}>Eliminar</button>
                               </td>
                             </tr>
@@ -140,7 +138,7 @@ export default function FinalProject() {
               </button>
             </div>
             <button className="btn btn-outline-success" onClick={() => addMeeting()}>Agendar Nueva Reunión</button>
-            
+            <button className="btn btn-primary my-2" onClick={() => goBack()}>Volver</button>
           </div>
           
         </div>
