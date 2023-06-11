@@ -8,12 +8,13 @@ export default function AddEmployeeToStudent() {
 
     const [employees, setEmployees] = useState([]);
     let navigate = useNavigate()
-    const { createdUser } = useParams();
+    const { centerName,createdUser } = useParams();
 
     useEffect(() => {
         loadEmployees();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    const [filteredEmployees, setFilteredEmployees] = useState([]);
 
     const token = localStorage.getItem('token');
     const loadEmployees = async () => {
@@ -22,7 +23,11 @@ export default function AddEmployeeToStudent() {
                 Authorization: `Bearer ${token}`,
             },
         });
-        setEmployees(result.data.data.content);
+        const allEmployees = result.data.data.content;
+  const filteredEmployees = allEmployees.filter((employee) => employee.center === centerName);
+  setEmployees(allEmployees);
+  setFilteredEmployees(filteredEmployees);
+       
     };
 
     const associateEmployee = async (id) => {
@@ -56,22 +61,19 @@ export default function AddEmployeeToStudent() {
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                employees.map((employee, index) => (
-                                    <tr>
-                                        <th scope="row" key={index}>{employee.id}</th>
-                                        <td>{employee.name}</td>
-                                        <td>{employee.lastName}</td>
-                                        <td>{employee.login_user.email}</td>
-                                        <td>{employee.center}</td>
-                                        <td>
-                                            
-                                            <button className="btn btn-danger mx-2" onClick={() => associateEmployee(employee.id)}>Seleccionar</button>
-                                        </td>
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
+  {filteredEmployees.map((employee, index) => (
+    <tr key={index}>
+      <th scope="row">{employee.id}</th>
+      <td>{employee.name}</td>
+      <td>{employee.lastName}</td>
+      <td>{employee.login_user.email}</td>
+      <td>{employee.center}</td>
+      <td>
+        <button className="btn btn-danger mx-2" onClick={() => associateEmployee(employee.id)}>Seleccionar</button>
+      </td>
+    </tr>
+  ))}
+</tbody>
                     </table>
                     
                 </div>

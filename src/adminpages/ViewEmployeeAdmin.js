@@ -12,6 +12,7 @@ export default function ViewEmployeeAdmin() {
         username: '',
         name: '',
         lastName: '',
+        center:'',
         login_user: {
             id: 0,
             username: '',
@@ -106,6 +107,10 @@ export default function ViewEmployeeAdmin() {
                                         <b>Apellidos: </b>
                                         {employee.lastName}
                                     </li>
+                                    <li className='list-group-item'>
+                                        <b>Empresa: </b>
+                                        {employee?.center}
+                                    </li>
                                     
                                     <li className='list-group-item'>
                                         <b>Prácticas: </b>
@@ -124,12 +129,12 @@ export default function ViewEmployeeAdmin() {
                                             </thead>
                                             <tbody>
                                                 {
-                                                    employee.internships.map((internship, index) => (
+                                                    employee?.internships?.map((internship, index) => (
                                                         <tr>
                                                             <th scope="row" key={index}>{internship.id}</th>
-                                                            <td>{internship.enterprise}</td>
-                                                            <td>{internship.student.username}</td>                                                           
-                                                            <td><Link className='btn btn-outline-primary mx-2' to={`/student/${internship.student.id}}/internship/${internship.id}`}>Detalle Práctica</Link></td>
+                                                            <td>{internship?.enterprise}</td>
+                                                            <td>{internship?.student?.username}</td>                                                           
+                                                            <td><Link className='btn btn-outline-primary mx-2' to={`/student/${internship?.student?.id}}/internship/${internship.id}`}>Detalle Práctica</Link></td>
                                                         </tr>
                                                     ))
                                                 }
