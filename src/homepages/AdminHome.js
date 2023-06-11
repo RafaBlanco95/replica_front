@@ -1,5 +1,5 @@
 import React from 'react'
-import Footer from '../layout/FooterAdmin'
+import FooterAdminHome from '../layout/FooterAdmin'
 import Navbar from '../layout/NavbarAdmin'
 
 
@@ -58,7 +58,7 @@ export default function Home() {
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
-          <div className='container'>
+          <div className='container '>
             <div class="carousel-inner">
               <div class="carousel-item active">
                 <img src="nervion.png" class="d-block w-100" alt="..." />
@@ -79,12 +79,15 @@ export default function Home() {
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-
+          
 
         </div>
         
       </div>
-      <Footer />
+      <div class="mt-5">
+      <FooterAdminHome />
+      </div>
+      
     </div>
   )
 }

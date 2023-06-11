@@ -17,7 +17,7 @@ export default function EditAdmin() {
 
  
 
-  const { username, password, email } = user;
+  const { username,  email } = user;
  
 
   const onInputChange = (e) => {
@@ -47,8 +47,8 @@ export default function EditAdmin() {
         <div>
         <Navbar/>
         <div className="container">
-            <div className='row'>
-                <div className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
+            <div className='row mb-5'>
+                <div className='col-md-6 offset-md-3 border rounded p-4 mt-5 shadow'>
                     <h2 className='text-center m-4'>Modificar Datos del Administrador</h2>
                     <form onSubmit={(e) => onSubmit(e)}>
                         <div className='mb-3'>
@@ -61,7 +61,7 @@ export default function EditAdmin() {
                             <label htmlFor='password' className='form-label'>
                                 Contraseña
                             </label>
-                            <input type={"text"} className="form-control" placeholder='Nueva Contraseña' name="password" value={password} onChange={(e) => onInputChange(e)} />
+                            <input type={"password"} className="form-control" placeholder='Nueva Contraseña' name="password"  onChange={(e) => onInputChange(e)} />
                         </div>
                         <div className='mb-3'>
                             <label htmlFor='email' className='form-label'>
