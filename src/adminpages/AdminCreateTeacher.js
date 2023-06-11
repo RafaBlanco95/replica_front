@@ -62,7 +62,14 @@ export default function AddTeacher() {
                             <label htmlFor='center' className='form-label'>
                                 Centro
                             </label>
-                            <input type={"text"} className="form-control" placeholder='Escuelas Salesianas' name="center" value={center} onChange={(e) => onInputChange(e)} />
+                            <select className='form-select' name='center' value={center} onChange={onInputChange}>
+                  <option value=''>Seleccionar Instituto</option>
+                  <option value='IES Alixar'>IES Alixar</option>
+                  <option value='IES Campanillas'>IES Campanillas</option>
+                  <option value='Salesianas Nervión'>Salesianas Nervión</option>
+                  <option value='Santa Joaquina de Vedruna'>Santa Joaquina de Vedruna</option>
+                  
+                </select>
                         </div>
                             <div className='mb-3'>
                                 <label htmlFor='grupo' className='form-label'>

@@ -6,15 +6,15 @@ import Navbar from '../layout/NavbarAdmin';
 
 export default function AddTeacherToStudent() {
 
-    const [teachers, setTeachers] = useState([]);
+    
     let navigate = useNavigate()
-    const { createdUser } = useParams();
+    const { centerName, createdUser } = useParams();
 
     useEffect(() => {
         loadTeachers();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
+    const [filteredTeachers, setFilteredTeachers] = useState([]);
     const token = localStorage.getItem('token');
     const loadTeachers = async () => {
         const result = await axios.get("https://replicarepo-production.up.railway.app/replica/v1/teachers", {
@@ -22,7 +22,12 @@ export default function AddTeacherToStudent() {
                 Authorization: `Bearer ${token}`,
             },
         });
-        setTeachers(result.data.data.content);
+        
+        const allTeachers = result.data.data.content;
+  const filteredTeachers = allTeachers.filter((teacher) => teacher.center === decodeURIComponent(centerName));
+
+  setFilteredTeachers(filteredTeachers);
+        
     };
 
     const associateTeacher = async (id) => {
@@ -56,22 +61,19 @@ export default function AddTeacherToStudent() {
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                teachers.map((teacher, index) => (
-                                    <tr>
-                                        <th scope="row" key={index}>{teacher.id}</th>
-                                        <td>{teacher.name}</td>
-                                        <td>{teacher.lastName}</td>
-                                        <td>{teacher.login_user.email}</td>
-                                        <td>{teacher.center}</td>
-                                        <td>
-                                            
-                                            <button className="btn btn-danger mx-2" onClick={() => associateTeacher(teacher.id)}>Seleccionar</button>
-                                        </td>
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
+                        {filteredTeachers.map((teacher, index) => (
+    <tr key={index}>
+      <th scope="row">{teacher.id}</th>
+      <td>{teacher.name}</td>
+      <td>{teacher.lastName}</td>
+      <td>{teacher.login_user.email}</td>
+      <td>{teacher.center}</td>
+      <td>
+        <button className="btn btn-danger mx-2" onClick={() => associateTeacher(teacher.id)}>Seleccionar</button>
+      </td>
+    </tr>
+  ))}
+</tbody>
                     </table>
                     
                 </div>

@@ -84,7 +84,7 @@ const App = () => {
         <Route path="/add_employee" element={<AddEmployee />} />
         <Route path="/add_users" element={<CreateUsers />} />
         <Route path="/complete_student/internship/:createdUser" element={<AddInternshipToStudent />} />
-        <Route path="/complete_student/teacher/:createdUser" element={<AddTeacherToStudent />} />
+        <Route path="/complete_student/teacher/:centerName/:createdUser" element={<AddTeacherToStudent />} />
         <Route path="/complete_student/employee/:centerName/:createdUser" element={<AddEmployeeToStudent />} />
         <Route path="/complete_student/final_project/:createdUser" element={<AddFinalProjectToStudent />} />
         <Route path="/edit_student_admin/:id" element={<EditStudentAdmin />} />

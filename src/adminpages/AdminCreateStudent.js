@@ -7,7 +7,6 @@ export default function AddStudent() {
 
     let navigate = useNavigate()
 
-    
     const [user, setUser] = useState({
         name:"",
         lastName:"",
@@ -16,19 +15,20 @@ export default function AddStudent() {
         role: [
           "student"
         ],
-        password: ""
+        password: "",
+        center:''
     });
-
-    const { name, lastName, username, email, password } = user
+    
+    const { name, lastName, username, email, password,center } = user
 
     const onInputChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
-    }
+        }
 
     const onSubmit = async (e) => {
         e.preventDefault();
         await axios.post(`https://replicarepo-production.up.railway.app/replica/v1/signup`, user)
-        navigate(`/complete_student/teacher/${username}`)
+        navigate(`/complete_student/teacher/${user.center}/${username}`)
     }
 
     return (
@@ -57,6 +57,18 @@ export default function AddStudent() {
                             </label>
                             <input type={"text"} className="form-control" placeholder='Apellidos' name="lastName" value={lastName} onChange={(e) => onInputChange(e)} />
                         </div>
+                        <div className='mb-3'>
+                            <label htmlFor='center' className='form-label'>
+                                Center
+                            </label>
+                            <select className='form-select' name='center' value={center} onChange={onInputChange}>
+                  <option value=''>Seleccionar Instituto</option>
+                  <option value='IES Alixar'>IES Alixar</option>
+                  <option value='IES Campanillas'>IES Campanillas</option>
+                  <option value='Salesianas Nervión'>Salesianas Nervión</option>
+                  <option value='Santa Joaquina de Vedruna'>Santa Joaquina de Vedruna</option>
+                  
+                </select></div>
                             <div className='mb-3'>
                                 <label htmlFor='grupo' className='form-label'>
                                     Correo Electrónico

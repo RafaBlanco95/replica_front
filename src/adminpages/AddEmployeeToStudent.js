@@ -6,7 +6,7 @@ import Navbar from '../layout/NavbarAdmin';
 
 export default function AddEmployeeToStudent() {
 
-    const [employees, setEmployees] = useState([]);
+    
     let navigate = useNavigate()
     const { centerName,createdUser } = useParams();
 
@@ -25,11 +25,11 @@ export default function AddEmployeeToStudent() {
         });
         const allEmployees = result.data.data.content;
   const filteredEmployees = allEmployees.filter((employee) => employee.center === centerName);
-  setEmployees(allEmployees);
+
   setFilteredEmployees(filteredEmployees);
        
     };
-
+ 
     const associateEmployee = async (id) => {
         
         await axios.patch(`https://replicarepo-production.up.railway.app/replica/v1/students/${createdUser}/employees/${id}`, {

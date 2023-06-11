@@ -92,7 +92,7 @@ export default function ViewEmployeeAdmin() {
             <Navbar />
             <div className="container">
                 <div className='row mb-5'>
-                    <div className='col-md-8 offset-md-2 border rounded p-4 mt-3 shadow'>
+                    <div className='col-md-8 offset-md-2 border rounded p-4 mt-5 shadow'>
                         <h2 className='text-center m-4'>Ficha del Tutor</h2>
                         <div className='card'>
                             <div className='card-header'>
@@ -151,7 +151,7 @@ export default function ViewEmployeeAdmin() {
 
 
                         </div>
-                        <Link className="btn btn-primary my-2" to={"/teachers_list"}>Volver</Link>
+                        <Link className="btn btn-primary my-2" to={"/employees_list"}>Volver</Link>
                     </div>
 
                 </div>

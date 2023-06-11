@@ -62,7 +62,12 @@ export default function AddEmployee() {
                             <label htmlFor='center' className='form-label'>
                                 Empresa
                             </label>
-                            <input type={"text"} className="form-control" placeholder='Escuelas Salesianas' name="center" value={center} onChange={(e) => onInputChange(e)} />
+                            <select className='form-select' name='center' value={center} onChange={onInputChange}>
+                  <option value=''>Seleccionar Empresa</option>
+                  <option value='NTTDATA'>NTTDATA</option>
+                  <option value='ACCENTURE'>ACCENTURE</option>
+                  <option value='DELOITTE'>DELOITTE</option>
+                </select>
                         </div>
                             <div className='mb-3'>
                                 <label htmlFor='grupo' className='form-label'>
