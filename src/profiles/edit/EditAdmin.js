@@ -15,13 +15,18 @@ export default function EditAdmin() {
     password: '',
   });
 
- 
+  const [isPasswordValid, setPasswordValid] = useState(false);
 
-  const { username,  email } = user;
- 
+  const { username, email } = user;
 
   const onInputChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    if (name === 'password') {
+      setPasswordValid(value.trim() !== '');
+    }
+
+    setUser({ ...user, [name]: value });
   };
 
   useEffect(() => {
@@ -41,41 +46,43 @@ export default function EditAdmin() {
     navigate(`/admin_profile`);
   };
 
-
-
-    return (
-        <div>
-        <Navbar/>
-        <div className="container">
-            <div className='row mb-5'>
-                <div className='col-md-6 offset-md-3 border rounded p-4 mt-5 shadow'>
-                    <h2 className='text-center m-4'>Modificar Datos del Administrador</h2>
-                    <form onSubmit={(e) => onSubmit(e)}>
-                        <div className='mb-3'>
-                            <label htmlFor='username' className='form-label'>
-                                Nombre de Usuario
-                            </label>
-                            <input type={"text"} className="form-control" placeholder='Nuevo Nombre de Usuario' name="username" value={username} onChange={(e) => onInputChange(e)} />
-                        </div>
-                        <div className='mb-3'>
-                            <label htmlFor='password' className='form-label'>
-                                Contraseña
-                            </label>
-                            <input type={"password"} className="form-control" placeholder='Nueva Contraseña' name="password"  onChange={(e) => onInputChange(e)} />
-                        </div>
-                        <div className='mb-3'>
-                            <label htmlFor='email' className='form-label'>
-                                Correo Electrónico
-                            </label>
-                            <input type={"text"} className="form-control" placeholder='nombre.apellidos@nervion.salesianas.org' name="email" value={email} onChange={(e) => onInputChange(e)} />
-                        </div>
-                        <button type="submit" className='btn btn-outline-primary'>Registrar Cambios</button>
-                        <Link className='btn btn-outline-danger mx-2' to={"/admin_profile"}>Cancelar</Link>
-                    </form>
-                </div>
-            </div>
+  return (
+    <div>
+      <Navbar />
+      <div className="container">
+        <div className='row mb-5'>
+          <div className='col-md-6 offset-md-3 border rounded p-4 mt-5 shadow'>
+            <h2 className='text-center m-4'>Modificar Datos del Administrador</h2>
+            <form onSubmit={(e) => onSubmit(e)}>
+              <div className='mb-3'>
+                <label htmlFor='username' className='form-label'>
+                  Nombre de Usuario
+                </label>
+                <input type='text' className='form-control' placeholder='Nuevo Nombre de Usuario' name='username' value={username} onChange={(e) => onInputChange(e)} />
+              </div>
+              <div className='mb-3'>
+                <label htmlFor='password' className='form-label'>
+                  Contraseña
+                </label>
+                <input type='password' className='form-control' placeholder='Nueva Contraseña' name='password' onChange={(e) => onInputChange(e)} />
+              </div>
+              <div className='mb-3'>
+                <label htmlFor='email' className='form-label'>
+                  Correo Electrónico
+                </label>
+                <input type='text' className='form-control' placeholder='nombre.apellidos@nervion.salesianas.org' name='email' value={email} onChange={(e) => onInputChange(e)} />
+              </div>
+              <button type='submit' className='btn btn-outline-primary' disabled={!isPasswordValid}>
+                Registrar Cambios
+              </button>
+              <Link className='btn btn-outline-danger mx-2' to={'/admin_profile'}>
+                Cancelar
+              </Link>
+            </form>
+          </div>
         </div>
-        <Footer/>
-        </div>
-    )
+      </div>
+      <Footer />
+    </div>
+  );
 }

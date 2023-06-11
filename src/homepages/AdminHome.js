@@ -64,7 +64,7 @@ export default function Home() {
                 <img src="nervion.png" class="d-block w-100" alt="..." />
               </div>
               <div class="carousel-item">
-                <img src="clases.PNG" class="d-block w-100" alt="..." />
+                <img src="entities_services.PNG" class="d-block w-100" alt="..." />
               </div>
               <div class="carousel-item">
                 <img src="replicaUser.PNG" class="d-block w-100" alt="..." />
@@ -84,9 +84,9 @@ export default function Home() {
         </div>
         
       </div>
-      <div class="mt-5">
+     
       <FooterAdminHome />
-      </div>
+      
       
     </div>
   )

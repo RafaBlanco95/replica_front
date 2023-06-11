@@ -57,11 +57,16 @@ export default function EditStudentAdmin() {
       }
     
   });
-
-  const { password, email } = user;
+  const [isPasswordValid, setPasswordValid] = useState(false);
+  const {email } = user;
   const { username, name, lastName } = student;
 
   const onInputChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === 'password') {
+      setPasswordValid(value.trim() !== '');
+    }
     setUser({ ...user, [e.target.name]: e.target.value });
     setStudent({ ...student, [e.target.name]: e.target.value });
   };
@@ -80,8 +85,6 @@ export default function EditStudentAdmin() {
     e.preventDefault();
     await axios.put(`https://replicarepo-production.up.railway.app/replica/v1/students/${id}`, student);
     await axios.put(`https://replicarepo-production.up.railway.app/replica/v1/users/${user.id}`, user);
-    localStorage.removeItem('username');
-    localStorage.setItem('username', username);
     navigate(`/view_student_admin/${id}`);
   };
 
@@ -92,7 +95,7 @@ export default function EditStudentAdmin() {
         <Navbar/>
         <div className="container">
             <div className='row'>
-                <div className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
+                <div className='col-md-6 offset-md-3 border rounded mb-5 p-4 mt-5 shadow'>
                     <h2 className='text-center m-4'>Modificar Datos del Alumno</h2>
                     <form onSubmit={(e) => onSubmit(e)}>
                         <div className='mb-3'>
@@ -117,7 +120,7 @@ export default function EditStudentAdmin() {
                             <label htmlFor='password' className='form-label'>
                                 Contraseña
                             </label>
-                            <input type={"text"} className="form-control" placeholder='Nueva Contraseña' name="password" value={password} onChange={(e) => onInputChange(e)} />
+                            <input type={"password"} className="form-control" placeholder='Nueva Contraseña' name="password"  onChange={(e) => onInputChange(e)} />
                         </div>
                         <div className='mb-3'>
                             <label htmlFor='email' className='form-label'>
@@ -125,7 +128,9 @@ export default function EditStudentAdmin() {
                             </label>
                             <input type={"text"} className="form-control" placeholder='nombre.apellidos@nervion.salesianas.org' name="email" value={email} onChange={(e) => onInputChange(e)} />
                         </div>
-                        <button type="submit" className='btn btn-outline-primary'>Registrar Cambios</button>
+                        <button type='submit' className='btn btn-outline-primary' disabled={!isPasswordValid}>
+                Registrar Cambios
+              </button>
                         <Link className='btn btn-outline-danger mx-2' to={"/students_list"}>Cancelar</Link>
                     </form>
                 </div>

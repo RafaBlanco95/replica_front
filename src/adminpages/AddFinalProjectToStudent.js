@@ -89,7 +89,7 @@ export default function AddFinalProjectToStudent() {
         <Navbar/>
         <div className="container">
             <div className='row'>
-                <div className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
+                <div className='col-md-6 offset-md-3 border rounded mb-5 p-4 mt-5 shadow'>
                     <h2 className='text-center m-4'>Crear TFG al Nuevo Alumno</h2>
                     <form onSubmit={(e) => onSubmit(e)}>
                        
@@ -109,7 +109,7 @@ export default function AddFinalProjectToStudent() {
                         
                        
                         
-                        <button type="submit" className='btn btn-outline-primary'>Registrar Cambios</button>
+                        <button type="submit" className='btn btn-outline-primary'>Registrar TFG</button>
                         <Link className='btn btn-outline-danger mx-2' to={`/complete_student/employee/${createdUser}`}>Volver</Link>
                     </form>
                 </div>

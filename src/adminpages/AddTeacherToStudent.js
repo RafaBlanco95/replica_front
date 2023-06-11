@@ -41,7 +41,7 @@ export default function AddTeacherToStudent() {
             <Navbar />
             <div className="container">
                 <div className="py-4">
-                    <h3 className='mb-3'><b>Seleccione el profesor a cargo del nuevo alumno</b></h3>
+                    <h3 className='mb-5'><b>Seleccione el profesor a cargo del nuevo alumno</b></h3>
 
                     <table class="table shadow">
                         <thead>
