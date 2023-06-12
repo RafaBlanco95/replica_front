@@ -8,21 +8,24 @@ export default function TeachersList() {
 
     const [teachers, setTeachers] = useState([]);
 
-
+    const [page, setPage] = useState(0); // Página actual
+    const [totalPages, setTotalPages] = useState(0); // Total de páginas
 
     useEffect(() => {
         loadTeachers();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [page]);
 
     const token = localStorage.getItem('token');
     const loadTeachers = async () => {
-        const result = await axios.get("https://replicarepo-production.up.railway.app/replica/v1/teachers", {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        const result = await axios.get("https://replicarepo-production.up.railway.app/replica/v1/teachers",  {
+            params: {
+              page: page, // Página actual
+              size: 5 // Tamaño de página (10 items por página en este ejemplo)
+            }
+          });
         setTeachers(result.data.data.content);
+        setTotalPages(result.data.data.page.totalPages);
     };
 
     const deleteTeacher = async (id,username) => {
@@ -38,7 +41,7 @@ export default function TeachersList() {
         });
         loadTeachers()
     }
-
+ 
     return (
         <div>
             <Navbar />
@@ -77,7 +80,13 @@ export default function TeachersList() {
                             }
                         </tbody>
                     </table>
-                    <Link class="btn btn-outline-success" to="/add_teacher">Añadir Profesor</Link>
+                    <button className="btn btn-primary my-2" disabled={page === 0} onClick={() => setPage(page - 1)}>
+                Anterior
+              </button>
+              <button className="btn btn-primary my-2" disabled={page === totalPages - 1} onClick={() => setPage(page + 1)}>
+                Siguiente
+              </button>
+                    <Link class="btn btn-outline-success mx-2" to="/add_teacher">Añadir Profesor</Link>
                 </div>
 
             </div>

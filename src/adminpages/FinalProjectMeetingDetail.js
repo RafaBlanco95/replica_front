@@ -37,7 +37,7 @@ export default function FinalProjectMeetingDetail() {
             <Navbar />
             <div className="container">
                 <div className='row mb-5'>
-                    <div className='col-md-8 offset-md-2 border rounded p-4 mt-3 shadow'>
+                    <div className='col-md-8 offset-md-2 border rounded p-4 mt-5 shadow'>
                         <h2 className='text-center m-4'>Reunión {meeting.date} {meeting.hour} </h2>
                         <div className='card'>
                             <div className='card-header'>

@@ -56,7 +56,7 @@ export default function StudentFinalProjectDetail() {
     
     setMeeting(result2.data.data.content);
     
-    setTotalPages(result.data.totalPages);
+    setTotalPages(result2.data.data.page.totalPages);
   };
 
   let navigate = useNavigate()
@@ -77,7 +77,7 @@ export default function StudentFinalProjectDetail() {
       <Navbar />
       <div className="container">
         <div className='row mb-5'>
-          <div className='col-md-8 offset-md-2 border rounded p-4 mt-3 shadow'>
+          <div className='col-md-8 offset-md-2 border rounded p-4 mt-5 shadow'>
             <h2 className='text-center m-4'>Detalle de TFG</h2>
             <div className='card'>
               <div className='card-header'>
@@ -138,7 +138,7 @@ export default function StudentFinalProjectDetail() {
               </button>
             </div>
             <button className="btn btn-outline-success" onClick={() => addMeeting()}>Agendar Nueva Reunión</button>
-            <button className="btn btn-primary my-2" onClick={() => goBack()}>Volver</button>
+            <button className="btn btn-primary mx-2" onClick={() => goBack()}>Volver</button>
           </div>
           
         </div>

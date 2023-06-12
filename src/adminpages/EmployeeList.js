@@ -8,21 +8,24 @@ export default function EmployeeList() {
 
     const [employees, setEmployees] = useState([]);
 
-
+    const [page, setPage] = useState(0); // Página actual
+    const [totalPages, setTotalPages] = useState(0); // Total de páginas
 
     useEffect(() => {
         loadEmployees();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [page]);
 
     const token = localStorage.getItem('token');
     const loadEmployees = async () => {
-        const result = await axios.get("https://replicarepo-production.up.railway.app/replica/v1/employees", {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        const result = await axios.get("https://replicarepo-production.up.railway.app/replica/v1/employees",{
+            params: {
+              page: page, // Página actual
+              size: 5 // Tamaño de página (10 items por página en este ejemplo)
+            }
+          });
         setEmployees(result.data.data.content);
+        setTotalPages(result.data.data.page.totalPages);
     };
 
     const deleteEmployee = async (id,username) => {
@@ -75,7 +78,13 @@ export default function EmployeeList() {
                             }
                         </tbody>
                     </table>
-                    <Link class="btn btn-outline-success" to="/add_employee">Añadir Empleado</Link>
+                    <button className="btn btn-primary my-2" disabled={page === 0} onClick={() => setPage(page - 1)}>
+                Anterior
+              </button>
+              <button className="btn btn-primary my-2" disabled={page === totalPages - 1} onClick={() => setPage(page + 1)}>
+                Siguiente
+              </button>
+                    <Link class="btn btn-outline-success mx-2" to="/add_employee">Añadir Empleado</Link>
                 </div>
 
             </div>

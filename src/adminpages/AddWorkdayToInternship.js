@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../layout/NavbarAdmin';
 import Footer from '../layout/FooterAdmin';
 export default function AddWorkdayToInternship() {
@@ -21,7 +21,9 @@ export default function AddWorkdayToInternship() {
     const onInputChange = (e) => {
         setWorkday({ ...workday, [e.target.name]: e.target.value })
     }
-
+    const goBack= async()=>{
+        navigate(`/student/${id}/internship/${id2}`)
+    }
     const onSubmit = async (e) => {
         e.preventDefault();
         await axios.post(`https://replicarepo-production.up.railway.app/replica/v1/workdays/internships/${id2}`, workday)
@@ -56,7 +58,7 @@ export default function AddWorkdayToInternship() {
                         </div>
                         
                             <button type="submit" className='btn btn-outline-primary'>Registrar</button>
-                            <Link className='btn btn-outline-danger mx-2' to="/teachers_list">Cancelar</Link>
+                            <button className="btn btn-danger mx-2" onClick={() => goBack()}>Cancelar</button>
                         </form>
                     </div>
                 </div>

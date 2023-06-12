@@ -60,12 +60,12 @@ export default function StudentInternshipDetail() {
     console.log(result2);
     setWorkday(result2.data.data.content);
     console.log(workday);
-    setTotalPages(result.data.totalPages);
+    setTotalPages(result2.data.data.page.totalPages);
   };
 
   let navigate = useNavigate()
     const goBack= async()=>{
-        navigate(`/view_student_admin/${id}`)
+        navigate(`/students_list`)
     }
 
     const addWorkday= async()=>{
@@ -89,18 +89,14 @@ export default function StudentInternshipDetail() {
     }
   };
 
-  const deleteWorkday = async (idWorkday) => {
-    const result4=await axios.delete(`https://replicarepo-production.up.railway.app/replica/v1/workdays/${idWorkday}`);
-    console.log(result4);
-    loadInternship()
-};
+  
   const totalHours = workday.reduce((sum, workday) => sum + workday.hours, 0);
   return (
     <div>
       <Navbar />
       <div className="container">
         <div className='row mb-5'>
-          <div className='col-md-8 offset-md-2 border rounded p-4 mt-3 shadow'>
+          <div className='col-md-8 offset-md-2 border rounded p-4 mt-5 shadow'>
             <h2 className='text-center m-4'>Detalle de Práctica</h2>
             <div className='card'>
               <div className='card-header'>
@@ -169,7 +165,7 @@ export default function StudentInternshipDetail() {
                               </td>
                               <td>
                                 <Link className='btn btn-outline-primary mx-2' to={`/student/${id}/internship/${id2}/workday/${workday.id}`}>Ver Más</Link>
-                                <button className="btn btn-danger mx-2" onClick={() => deleteWorkday(workday.id)}>Eliminar</button>
+                                
                               </td>
                             </tr>
                           ))
@@ -189,7 +185,7 @@ export default function StudentInternshipDetail() {
               </button>
             </div>
             <button className="btn btn-outline-success" onClick={() => addWorkday()}>Registrar Día de Trabajo</button>
-            <button className="btn btn-primary my-2" onClick={() => goBack()}>Volver</button>
+            <button className="btn btn-primary mx-2" onClick={() => goBack()}>Volver</button>
           </div>
         </div>
       </div>

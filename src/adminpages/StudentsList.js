@@ -7,22 +7,26 @@ import Navbar from '../layout/NavbarAdmin';
 export default function StudentsList() {
 
     const [students, setStudents] = useState([]);
-
+    const [page, setPage] = useState(0); // Página actual
+    const [totalPages, setTotalPages] = useState(0); // Total de páginas
+  
 
 
     useEffect(() => {
         loadStudents();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [page]);
 
     const token = localStorage.getItem('token');
     const loadStudents = async () => {
         const result = await axios.get("https://replicarepo-production.up.railway.app/replica/v1/students", {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+            params: {
+              page: page, // Página actual
+              size: 5 // Tamaño de página (10 items por página en este ejemplo)
+            }
+          });
         setStudents(result.data.data.content);
+         setTotalPages(result.data.data.page.totalPages);
     };
 
     const deleteStudent = async (id,username) => {
@@ -75,9 +79,17 @@ export default function StudentsList() {
                             }
                         </tbody>
                     </table>
-                    <Link class="btn btn-outline-success" to="/add_student">Añadir Alumno</Link>
-                </div>
+                    <button className="btn btn-primary my-2" disabled={page === 0} onClick={() => setPage(page - 1)}>
+                Anterior
+              </button>
+              <button className="btn btn-primary my-2" disabled={page === totalPages - 1} onClick={() => setPage(page + 1)}>
+                Siguiente
+              </button>
+              <Link class="btn btn-outline-success mx-2" to="/add_student">Añadir Alumno</Link>
 
+                </div>
+                
+              
             </div>
             <Footer />
         </div>

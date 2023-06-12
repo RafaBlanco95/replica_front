@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../layout/NavbarAdmin';
 import Footer from '../layout/FooterAdmin';
 export default function AddMeetingToFinalProject() {
@@ -16,12 +16,14 @@ export default function AddMeetingToFinalProject() {
     progress: ''
     });
 
-    const { date, hour, duration} = meeting
+    const { date, hour, duration, progress} = meeting
 
     const onInputChange = (e) => {
         setMeeting({ ...meeting, [e.target.name]: e.target.value })
     }
-
+    const goBack= async()=>{
+        navigate(`/student/${id}/final_project/${id2}`)
+    }
     const onSubmit = async (e) => {
         e.preventDefault();
         await axios.post(`https://replicarepo-production.up.railway.app/replica/v1/meetings/final_projects/${id2}`, meeting)
@@ -46,17 +48,23 @@ export default function AddMeetingToFinalProject() {
                             <label htmlFor='hour' className='form-label'>
                                 Hora
                             </label>
-                            <input type={"text"} className="form-control" placeholder='Nombre' name="hour" value={hour} onChange={(e) => onInputChange(e)} />
+                            <input type={"text"} className="form-control" placeholder='00:00:00' name="hour" value={hour} onChange={(e) => onInputChange(e)} />
                         </div>
                         <div className='mb-3'>
                             <label htmlFor='duration' className='form-label'>
                                 Duración
                             </label>
-                            <input type={"number"} className="form-control" placeholder='15 min' name="duration" value={duration} onChange={(e) => onInputChange(e)} />
+                            <input type={"number"} className="form-control" placeholder='15' name="duration" value={duration} onChange={(e) => onInputChange(e)} />
+                        </div>
+                        <div className='mb-3'>
+                            <label htmlFor='progress' className='form-label'>
+                                Descripción
+                            </label>
+                            <input type={"text"} className="form-control" placeholder='Descripción' name="progress" value={progress} onChange={(e) => onInputChange(e)} />
                         </div>
                         
                             <button type="submit" className='btn btn-outline-primary'>Registrar</button>
-                            <Link className='btn btn-outline-danger mx-2' to="/teachers_list">Cancelar</Link>
+                            <button className="btn btn-danger mx-2" onClick={() => goBack()}>Cancelar</button>
                         </form>
                     </div>
                 </div>
