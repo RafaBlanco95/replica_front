@@ -65,7 +65,7 @@ export default function TeacherAddMeetingToFinalProject() {
                         </div>
                         
                             <button type="submit" className='btn btn-outline-primary'>Registrar</button>
-                            <button className="btn btn-primary my-2" onClick={() => goBack()}>Cancelar</button>
+                            <button className="btn btn-danger mx-2" onClick={() => goBack()}>Cancelar</button>
                         </form>
                     </div>
                 </div>

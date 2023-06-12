@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import Navbar from '../layout/NavbarAdmin';
-import Footer from '../layout/FooterAdmin';
+import Navbar from '../layout/NavbarStudent';
+import Footer from '../layout/FooterStudent';
 export default function AddMeetingToFinalProjectStudent() {
 
     let navigate = useNavigate()

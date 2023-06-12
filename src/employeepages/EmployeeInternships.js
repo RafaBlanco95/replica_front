@@ -69,14 +69,14 @@ export default function EmployeeInternships() {
                             }
                         </tbody>
                     </table>
-                    
-                </div>
-                <button className="btn btn-primary my-2" disabled={page === 0} onClick={() => setPage(page - 1)}>
+                    <button className="btn btn-primary my-2" disabled={page === 0} onClick={() => setPage(page - 1)}>
                 Anterior
               </button>
               <button className="btn btn-primary my-2" disabled={page === totalPages - 1} onClick={() => setPage(page + 1)}>
                 Siguiente
               </button>
+                </div>
+               
             </div>
             <FooterStudent />
         </div>
